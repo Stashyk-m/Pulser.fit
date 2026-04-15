@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pulser.Coach — The Coach OS</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="Pulser.Coach is the third pillar of the Pulser platform: a full operating system for personal trainers, powered by our proprietary DeepTech movement engine." />
+<meta property="og:title" content="Pulser.Coach — The Coach OS" />
+<meta property="og:description" content="Pulser.Coach is the third pillar of the Pulser platform: a full operating system for personal trainers, powered by our proprietary DeepTech movement engine." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { colors: { brand: '#FF3B47', bg: '#0A0A0F', elev: '#12121A' } } } };</script>
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<div class="bg-aura"></div>
+
+<header class="nav">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="logo-mark">
+      <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path class="pulse-ring" d="M 50,8 A 42,42 0 1 1 8,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-2" d="M 50,24 A 26,26 0 1 1 24,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-3" d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#FF3B47"/>
+      </svg>
+      <span>PULSER</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8"><a href="for-gyms.html" class="nav-link" data-nav>For Gyms</a><a href="for-members.html" class="nav-link" data-nav>For Members</a><a href="for-coaches.html" class="nav-link" data-nav>For Coaches</a><a href="platform.html" class="nav-link" data-nav>Platform</a><a href="pricing.html" class="nav-link" data-nav>Pricing</a><a href="about.html" class="nav-link" data-nav>About</a><a href="investors.html" class="nav-link" data-nav>Investors</a></nav>
+    <div class="flex items-center gap-3">
+      <a href="contact.html" class="btn btn-primary hidden sm:inline-flex">Book a Demo</a>
+      <button data-menu-toggle aria-label="Menu" aria-expanded="false" class="md:hidden p-2 border border-white/10 rounded-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div data-mobile-menu class="mobile-menu md:hidden border-t border-white/5 bg-[#0A0A0F]">
+    <div class="px-6 py-4 flex flex-col gap-4 text-sm"><a href="for-gyms.html" class="nav-link">For Gyms</a><a href="for-members.html" class="nav-link">For Members</a><a href="for-coaches.html" class="nav-link">For Coaches</a><a href="platform.html" class="nav-link">Platform</a><a href="pricing.html" class="nav-link">Pricing</a><a href="about.html" class="nav-link">About</a><a href="investors.html" class="nav-link">Investors</a><a href="contact.html" class="btn btn-primary w-full justify-center">Book a Demo</a>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="pt-20 pb-20 md:pt-24">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="eyebrow mb-5">Pulser.Coach · The Coach OS</div>
+        <h1 class="heading-xl mb-6">Every client. Every plan. <span class="gradient-red">Zero chaos.</span></h1>
+        <p class="text-lg md:text-xl text-white/65 mb-8 leading-relaxed">Pulser.Coach is the third pillar of the Pulser platform — a full operating system for personal trainers and coaches, built on the same proprietary movement engine as Pulser.One and Pulser.Gym.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="contact.html" class="btn btn-primary btn-lg">Join Early Access</a>
+          <a href="for-coaches.html" class="btn btn-ghost btn-lg">See the Coach View</a>
+        </div>
+      </div>
+      <div class="card p-5">
+        <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Coach cockpit</div>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="p-3 rounded-lg bg-white/5"><div class="text-xl font-bold">11</div><div class="text-xs text-white/50">Active clients</div></div>
+          <div class="p-3 rounded-lg bg-white/5"><div class="text-xl font-bold text-brand">2</div><div class="text-xs text-white/50">Need review</div></div>
+          <div class="p-3 rounded-lg bg-white/5"><div class="text-xl font-bold">€3.2K</div><div class="text-xs text-white/50">MRR</div></div>
+        </div>
+        <div class="mt-4 p-3 rounded-lg bg-black/30 text-xs text-white/70">
+          <div class="text-white/50 uppercase tracking-widest text-[10px] mb-1">This week</div>
+          <div>14 sessions logged · 4 video reviews sent · 1 plan rollover scheduled</div>
+        </div>
+        <div class="mt-3 p-3 rounded-lg bg-brand/10 border border-brand/30 text-xs">
+          <div class="text-brand font-semibold mb-1">AI SUMMARY</div>
+          <div class="text-white/80">Jakub trending down on form score (↓12% over 3 sessions). Recommend deload + video check-in.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core modules -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-14"><div class="eyebrow mb-4">Core Modules</div><h2 class="heading-lg">Six tools. One cockpit.</h2></div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="card"><h3 class="font-bold mb-2">Clients &amp; Plans</h3><p class="text-white/60 text-sm leading-relaxed">Every client profile with training history, goals, limitations and live plan status.</p></div>
+        <div class="card"><h3 class="font-bold mb-2">Programming Studio</h3><p class="text-white/60 text-sm leading-relaxed">Drag-and-drop plan builder with templates, periodisation and an exercise library — synced to Pulser.One.</p></div>
+        <div class="card card-accent"><h3 class="font-bold mb-2">Live Form Feedback</h3><p class="text-white/60 text-sm leading-relaxed">The DeepTech movement engine inside Pulser.One scores form in real time — you see it in your cockpit.</p></div>
+        <div class="card"><h3 class="font-bold mb-2">Check-ins &amp; Messaging</h3><p class="text-white/60 text-sm leading-relaxed">Scheduled nudges, video replies, async voice notes. AI prioritises who needs you most this week.</p></div>
+        <div class="card"><h3 class="font-bold mb-2">Billing &amp; Packages</h3><p class="text-white/60 text-sm leading-relaxed">Sessions, packs, subscriptions, cancellations, EU-ready payments. Invoices go out automatically.</p></div>
+        <div class="card"><h3 class="font-bold mb-2">Gym Network</h3><p class="text-white/60 text-sm leading-relaxed">Host sessions at any gym on the Pulser network. Get discovered by members browsing for a coach.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why it's different -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-3xl mb-12"><div class="eyebrow mb-4">Why Pulser.Coach</div><h2 class="heading-lg">Nobody else has the movement data.</h2></div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="card">
+          <h3 class="font-bold mb-2">Built on our own movement engine</h3>
+          <p class="text-white/60 text-sm leading-relaxed">The same proprietary movement interpretation layer your clients use in Pulser.One streams into your cockpit — form score, tempo, ROM, fatigue markers. That's a DeepTech moat no generic coach-app can copy.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-bold mb-2">Connected to gyms and members</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Other coach tools are isolated. Pulser.Coach is part of a platform with gyms and members already on it — so the people you need to reach are already here.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-bold mb-2">EHDS-ready &amp; EU-first</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Designed to meet the 2026 European Health Data Space rules from day one. Your clients' data stays portable, consented and compliant.</p>
+        </div>
+        <div class="card">
+          <h3 class="font-bold mb-2">One bill, not six</h3>
+          <p class="text-white/60 text-sm leading-relaxed">Replaces scheduling, payments, programming, video coaching, client CRM and analytics. Starts at coach-friendly pricing, not SaaS-bundle pricing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 border-t border-white/5">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="heading-lg mb-6">Join the first cohort of Pulser.Coach.</h2>
+      <p class="text-white/65 mb-10 max-w-2xl mx-auto">Pulser.Coach is in guided early access. Apply for the first cohort — priority onboarding, discounted pricing, direct line to the product team.</p>
+      <div class="flex flex-wrap gap-3 justify-center"><a href="contact.html" class="btn btn-primary btn-lg">Apply for Early Access</a><a href="platform.html" class="btn btn-ghost btn-lg">See the Platform</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer mt-10">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-5 gap-10">
+    <div class="md:col-span-2">
+      <div class="logo-mark mb-4">
+        <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <path d="M 50,8 A 42,42 0 1 1 8,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
+          <path d="M 50,24 A 26,26 0 1 1 24,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
+          <path d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#FF3B47"/>
+        </svg>
+        <span>PULSER</span>
+      </div>
+      <p class="text-white/55 max-w-sm leading-relaxed">The DeepTech operating system for modern fitness. Gyms, members and coaches — in sync.</p>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">DeepTech</span>
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">EHDS-ready</span>
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">Built in the EU</span>
+      </div>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Platform</div>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="platform.html" class="hover:text-white">Overview</a></li>
+        <li><a href="pulser-gym.html" class="hover:text-white">Pulser.Gym</a></li>
+        <li><a href="pulser-one.html" class="hover:text-white">Pulser.One</a></li>
+        <li><a href="pulser-coach.html" class="hover:text-white">Pulser.Coach</a></li>
+        <li><a href="ai-coach.html" class="hover:text-white">AI Coach</a></li>
+        <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Audiences</div>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="for-gyms.html" class="hover:text-white">For Gyms</a></li>
+        <li><a href="for-members.html" class="hover:text-white">For Members</a></li>
+        <li><a href="for-coaches.html" class="hover:text-white">For Coaches</a></li>
+        <li><a href="investors.html" class="hover:text-white">Investors</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Company</div>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a href="about.html" class="hover:text-white">About</a></li>
+        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        <li><a href="mailto:go@pulser.fit" class="hover:text-white">go@pulser.fit</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40">
+      <div>© 2026 Pulser. All rights reserved.</div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white/70">Privacy</a>
+        <a href="#" class="hover:text-white/70">Terms</a>
+        <a href="#" class="hover:text-white/70">EHDS Compliance</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
