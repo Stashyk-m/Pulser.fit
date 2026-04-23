@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>For Coaches — Pulser.Coach</title>
+<title data-i18n="for_coaches.page_title">For Coaches — Pulser.Coach</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta name="description" content="Pulser.Coach is the cockpit for personal trainers and coaches — clients, programming, billing and live feedback on one platform, connected to every gym and member on Pulser." />
+<meta name="description" content="Pulser.Coach is the cockpit for personal trainers and coaches — clients, programming, billing and live feedback on one platform, connected to every gym and member on Pulser." data-i18n-meta="for_coaches.meta_desc" />
 <meta property="og:title" content="For Coaches — Pulser.Coach" />
 <meta property="og:description" content="Pulser.Coach is the cockpit for personal trainers and coaches — clients, programming, billing and live feedback on one platform, connected to every gym and member on Pulser." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,18 +26,18 @@
         <path class="pulse-ring pulse-ring-2" d="M 50,24 A 26,26 0 1 1 24,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
         <path class="pulse-ring pulse-ring-3" d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#FF3B47"/>
       </svg>
-      <span>PULSER</span>
+      <span data-i18n="for_coaches.pulser">PULSER</span>
     </a>
-    <nav class="hidden md:flex items-center gap-8"><a href="for-gyms.html" class="nav-link" data-nav>For Gyms</a><a href="for-members.html" class="nav-link" data-nav>For Members</a><a href="for-coaches.html" class="nav-link" data-nav>For Coaches</a><a href="platform.html" class="nav-link" data-nav>Platform</a><a href="pricing.html" class="nav-link" data-nav>Pricing</a><a href="about.html" class="nav-link" data-nav>About</a><a href="investors.html" class="nav-link" data-nav>Investors</a></nav>
+    <nav class="hidden md:flex items-center gap-8"><a href="for-gyms.html" class="nav-link" data-nav data-i18n="for_coaches.for_gyms">For Gyms</a><a href="for-members.html" class="nav-link" data-nav data-i18n="for_coaches.for_members">For Members</a><a href="for-coaches.html" class="nav-link" data-nav data-i18n="for_coaches.for_coaches_2">For Coaches</a><a href="platform.html" class="nav-link" data-nav data-i18n="for_coaches.platform">Platform</a><a href="pricing.html" class="nav-link" data-nav data-i18n="for_coaches.pricing">Pricing</a><a href="about.html" class="nav-link" data-nav data-i18n="for_coaches.about">About</a><a href="investors.html" class="nav-link" data-nav data-i18n="for_coaches.investors">Investors</a></nav>
     <div class="flex items-center gap-3">
-      <a href="contact.html" class="btn btn-primary hidden sm:inline-flex">Book a Demo</a>
+      <a href="contact.html" class="btn btn-primary hidden sm:inline-flex" data-i18n="for_coaches.book_a_demo">Book a Demo</a><div class="lang-switcher relative ml-2"><button class="lang-btn" aria-label="Change language"><span class="lang-code">EN</span><svg width="10" height="6" viewBox="0 0 10 6" fill="none" class="ml-1"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="lang-dropdown"></div></div>
       <button data-menu-toggle aria-label="Menu" aria-expanded="false" class="md:hidden p-2 border border-white/10 rounded-lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
   <div data-mobile-menu class="mobile-menu md:hidden border-t border-white/5 bg-[#0A0A0F]">
-    <div class="px-6 py-4 flex flex-col gap-4 text-sm"><a href="for-gyms.html" class="nav-link">For Gyms</a><a href="for-members.html" class="nav-link">For Members</a><a href="for-coaches.html" class="nav-link">For Coaches</a><a href="platform.html" class="nav-link">Platform</a><a href="pricing.html" class="nav-link">Pricing</a><a href="about.html" class="nav-link">About</a><a href="investors.html" class="nav-link">Investors</a><a href="contact.html" class="btn btn-primary w-full justify-center">Book a Demo</a>
+    <div class="px-6 py-4 flex flex-col gap-4 text-sm"><a href="for-gyms.html" class="nav-link" data-i18n="for_coaches.for_gyms_2">For Gyms</a><a href="for-members.html" class="nav-link" data-i18n="for_coaches.for_members_2">For Members</a><a href="for-coaches.html" class="nav-link" data-i18n="for_coaches.for_coaches_3">For Coaches</a><a href="platform.html" class="nav-link" data-i18n="for_coaches.platform_2">Platform</a><a href="pricing.html" class="nav-link" data-i18n="for_coaches.pricing_2">Pricing</a><a href="about.html" class="nav-link" data-i18n="for_coaches.about_2">About</a><a href="investors.html" class="nav-link" data-i18n="for_coaches.investors_2">Investors</a><a href="contact.html" class="btn btn-primary w-full justify-center" data-i18n="for_coaches.book_a_demo_2">Book a Demo</a>
     </div>
   </div>
 </header>
@@ -45,12 +45,12 @@
   <section class="pt-20 pb-16 md:pt-24">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-4xl">
-        <div class="eyebrow mb-5">For Coaches</div>
-        <h1 class="heading-xl mb-6">You're a coach, not a <span class="gradient-red">spreadsheet wrangler</span>.</h1>
+        <div class="eyebrow mb-5" data-i18n="for_coaches.for_coaches">For Coaches</div>
+        <h1 class="heading-xl mb-6" data-i18n="for_coaches.youre_a_coach_not_a_spreadsheet_wrangler">You're a coach, not a <span class="gradient-red" data-i18n="for_coaches.spreadsheet_wrangler">spreadsheet wrangler</span>.</h1>
         <p class="text-lg md:text-xl text-white/65 leading-relaxed">Notion for plans. WhatsApp for check-ins. Google Sheets for programming. A separate app for payments. Pulser.Coach replaces the stack — and connects you directly to the members and gyms already on the Pulser platform.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="contact.html" class="btn btn-primary btn-lg">Get Early Access</a>
-          <a href="pulser-coach.html" class="btn btn-ghost btn-lg">See Pulser.Coach</a>
+          <a href="contact.html" class="btn btn-primary btn-lg" data-i18n="for_coaches.get_early_access">Get Early Access</a>
+          <a href="pulser-coach.html" class="btn btn-ghost btn-lg" data-i18n="for_coaches.see_pulsercoach">See Pulser.Coach</a>
         </div>
       </div>
     </div>
@@ -59,11 +59,11 @@
   <!-- The pain -->
   <section class="py-20 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-12"><div class="eyebrow mb-4">The Coach's Problem</div><h2 class="heading-lg">Fragmentation eats your margin.</h2></div>
+      <div class="max-w-3xl mb-12"><div class="eyebrow mb-4" data-i18n="for_coaches.the_coachs_problem">The Coach's Problem</div><h2 class="heading-lg" data-i18n="for_coaches.fragmentation_eats_your_margin">Fragmentation eats your margin.</h2></div>
       <div class="grid md:grid-cols-3 gap-5">
-        <div class="card"><div class="text-3xl font-bold text-brand mb-2">6+</div><h3 class="font-bold mb-2">Tools per coach</h3><p class="text-white/60 text-sm leading-relaxed">Programming, comms, payments, scheduling, video, client notes — none of them talk to each other.</p></div>
-        <div class="card"><div class="text-3xl font-bold text-brand mb-2">30%</div><h3 class="font-bold mb-2">Unbilled hours</h3><p class="text-white/60 text-sm leading-relaxed">Chasing clients, rebuilding plans, updating spreadsheets — time that never makes it onto an invoice.</p></div>
-        <div class="card"><div class="text-3xl font-bold text-brand mb-2">0</div><h3 class="font-bold mb-2">Data from the floor</h3><p class="text-white/60 text-sm leading-relaxed">You prescribe a plan. The client trains. You have no idea what actually happened until the next session.</p></div>
+        <div class="card"><div class="text-3xl font-bold text-brand mb-2" data-i18n="for_coaches.6">6+</div><h3 class="font-bold mb-2" data-i18n="for_coaches.tools_per_coach">Tools per coach</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.programming_comms_payments_scheduling_video_client_notes_non">Programming, comms, payments, scheduling, video, client notes — none of them talk to each other.</p></div>
+        <div class="card"><div class="text-3xl font-bold text-brand mb-2" data-i18n="for_coaches.30">30%</div><h3 class="font-bold mb-2" data-i18n="for_coaches.unbilled_hours">Unbilled hours</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.chasing_clients_rebuilding_plans_updating_spreadsheets_time_">Chasing clients, rebuilding plans, updating spreadsheets — time that never makes it onto an invoice.</p></div>
+        <div class="card"><div class="text-3xl font-bold text-brand mb-2">0</div><h3 class="font-bold mb-2" data-i18n="for_coaches.data_from_the_floor">Data from the floor</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.you_prescribe_a_plan_the_client_trains_you_have_no_idea_what">You prescribe a plan. The client trains. You have no idea what actually happened until the next session.</p></div>
       </div>
     </div>
   </section>
@@ -71,14 +71,14 @@
   <!-- What Pulser.Coach does -->
   <section class="py-24 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6">
-      <div class="max-w-3xl mb-14"><div class="eyebrow mb-4">What you get</div><h2 class="heading-lg">One cockpit for everyone you train.</h2></div>
+      <div class="max-w-3xl mb-14"><div class="eyebrow mb-4" data-i18n="for_coaches.what_you_get">What you get</div><h2 class="heading-lg" data-i18n="for_coaches.one_cockpit_for_everyone_you_train">One cockpit for everyone you train.</h2></div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div class="card"><h3 class="font-bold mb-2">Client Roster</h3><p class="text-white/60 text-sm leading-relaxed">Every client, every plan, every payment status — one list, one tap. Across every gym they visit.</p></div>
-        <div class="card"><h3 class="font-bold mb-2">Programming Studio</h3><p class="text-white/60 text-sm leading-relaxed">Drag-and-drop plan builder with your templates, exercise library and periodisation — delivered straight into their Pulser.One app.</p></div>
-        <div class="card"><h3 class="font-bold mb-2">Live Feedback Loop</h3><p class="text-white/60 text-sm leading-relaxed">When a client trains, you see real sets, reps, tempo and form score — powered by the proprietary movement engine inside Pulser.One.</p></div>
-        <div class="card"><h3 class="font-bold mb-2">Smart Check-ins</h3><p class="text-white/60 text-sm leading-relaxed">Automated nudges, video reviews and recovery pings, with the AI surfacing who actually needs your attention this week.</p></div>
-        <div class="card"><h3 class="font-bold mb-2">Billing &amp; Packages</h3><p class="text-white/60 text-sm leading-relaxed">Online/offline sessions, packs, subscriptions, cancellations — invoices sent automatically. No more chasing.</p></div>
-        <div class="card card-accent"><h3 class="font-bold mb-2">Gym Marketplace</h3><p class="text-white/60 text-sm leading-relaxed">Connect to gyms on the Pulser network. Your members can train at partner gyms; the gyms can offer you to their members.</p></div>
+        <div class="card"><h3 class="font-bold mb-2" data-i18n="for_coaches.client_roster">Client Roster</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.every_client_every_plan_every_payment_status_one_list_one_ta">Every client, every plan, every payment status — one list, one tap. Across every gym they visit.</p></div>
+        <div class="card"><h3 class="font-bold mb-2" data-i18n="for_coaches.programming_studio">Programming Studio</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.draganddrop_plan_builder_with_your_templates_exercise_librar">Drag-and-drop plan builder with your templates, exercise library and periodisation — delivered straight into their Pulser.One app.</p></div>
+        <div class="card"><h3 class="font-bold mb-2" data-i18n="for_coaches.live_feedback_loop">Live Feedback Loop</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.when_a_client_trains_you_see_real_sets_reps_tempo_and_form_s">When a client trains, you see real sets, reps, tempo and form score — powered by the proprietary movement engine inside Pulser.One.</p></div>
+        <div class="card"><h3 class="font-bold mb-2" data-i18n="for_coaches.smart_checkins">Smart Check-ins</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.automated_nudges_video_reviews_and_recovery_pings_with_the_a">Automated nudges, video reviews and recovery pings, with the AI surfacing who actually needs your attention this week.</p></div>
+        <div class="card"><h3 class="font-bold mb-2" data-i18n="for_coaches.billing_amp_packages">Billing &amp; Packages</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.onlineoffline_sessions_packs_subscriptions_cancellations_inv">Online/offline sessions, packs, subscriptions, cancellations — invoices sent automatically. No more chasing.</p></div>
+        <div class="card card-accent"><h3 class="font-bold mb-2" data-i18n="for_coaches.gym_marketplace">Gym Marketplace</h3><p class="text-white/60 text-sm leading-relaxed" data-i18n="for_coaches.connect_to_gyms_on_the_pulser_network_your_members_can_train">Connect to gyms on the Pulser network. Your members can train at partner gyms; the gyms can offer you to their members.</p></div>
       </div>
     </div>
   </section>
@@ -87,28 +87,28 @@
   <section class="py-24 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
       <div>
-        <div class="eyebrow mb-4">How it fits</div>
-        <h2 class="heading-lg mb-5">Built on the same movement engine your clients already trust.</h2>
-        <p class="text-white/70 leading-relaxed mb-4">Pulser.Coach plugs directly into Pulser.One (the member app) and Pulser.Gym (the gym OS). Whatever your client does in a session — at home, at the gym, on the road — flows into your cockpit in real time.</p>
-        <p class="text-white/70 leading-relaxed">No manual logging. No "can you send me a video?" No more flying blind between sessions.</p>
+        <div class="eyebrow mb-4" data-i18n="for_coaches.how_it_fits">How it fits</div>
+        <h2 class="heading-lg mb-5" data-i18n="for_coaches.built_on_the_same_movement_engine_your_clients_already_trust">Built on the same movement engine your clients already trust.</h2>
+        <p class="text-white/70 leading-relaxed mb-4" data-i18n="for_coaches.pulsercoach_plugs_directly_into_pulserone_the_member_app_and">Pulser.Coach plugs directly into Pulser.One (the member app) and Pulser.Gym (the gym OS). Whatever your client does in a session — at home, at the gym, on the road — flows into your cockpit in real time.</p>
+        <p class="text-white/70 leading-relaxed" data-i18n="for_coaches.no_manual_logging_no_can_you_send_me_a_video_no_more_flying_">No manual logging. No "can you send me a video?" No more flying blind between sessions.</p>
       </div>
       <div class="card p-6">
-        <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Today's roster · 11 clients</div>
+        <div class="text-xs uppercase tracking-widest text-white/40 mb-4" data-i18n="for_coaches.todays_roster_11_clients">Today's roster · 11 clients</div>
         <div class="space-y-3 text-sm">
           <div class="flex items-center justify-between p-3 rounded-lg bg-white/5">
-            <div><div class="font-semibold">Marta K.</div><div class="text-xs text-white/50">Push day · 87% form score</div></div>
-            <div class="text-xs px-2 py-1 rounded-full bg-[#22C55E]/15 text-[#22C55E]">On track</div>
+            <div><div class="font-semibold" data-i18n="for_coaches.marta_k">Marta K.</div><div class="text-xs text-white/50" data-i18n="for_coaches.push_day_87_form_score">Push day · 87% form score</div></div>
+            <div class="text-xs px-2 py-1 rounded-full bg-[#22C55E]/15 text-[#22C55E]" data-i18n="for_coaches.on_track">On track</div>
           </div>
           <div class="flex items-center justify-between p-3 rounded-lg bg-white/5">
-            <div><div class="font-semibold">Jakub W.</div><div class="text-xs text-white/50">Skipped 2 sessions · HRV drop</div></div>
-            <div class="text-xs px-2 py-1 rounded-full bg-brand/15 text-brand">Needs you</div>
+            <div><div class="font-semibold" data-i18n="for_coaches.jakub_w">Jakub W.</div><div class="text-xs text-white/50" data-i18n="for_coaches.skipped_2_sessions_hrv_drop">Skipped 2 sessions · HRV drop</div></div>
+            <div class="text-xs px-2 py-1 rounded-full bg-brand/15 text-brand" data-i18n="for_coaches.needs_you">Needs you</div>
           </div>
           <div class="flex items-center justify-between p-3 rounded-lg bg-white/5">
-            <div><div class="font-semibold">Natalia R.</div><div class="text-xs text-white/50">Training in Berlin this week</div></div>
-            <div class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/70">Cross-gym</div>
+            <div><div class="font-semibold" data-i18n="for_coaches.natalia_r">Natalia R.</div><div class="text-xs text-white/50" data-i18n="for_coaches.training_in_berlin_this_week">Training in Berlin this week</div></div>
+            <div class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/70" data-i18n="for_coaches.crossgym">Cross-gym</div>
           </div>
         </div>
-        <div class="mt-4 p-3 rounded-lg bg-brand/10 border border-brand/30 text-xs text-white/80"><span class="text-brand font-semibold">AI:</span> Jakub's load + HRV suggest a deload week. One-tap to push the update.</div>
+        <div class="mt-4 p-3 rounded-lg bg-brand/10 border border-brand/30 text-xs text-white/80"><span class="text-brand font-semibold" data-i18n="for_coaches.ai">AI:</span> Jakub's load + HRV suggest a deload week. One-tap to push the update.</div>
       </div>
     </div>
   </section>
@@ -116,9 +116,9 @@
   <!-- CTA -->
   <section class="py-24 border-t border-white/5">
     <div class="max-w-5xl mx-auto px-6 text-center">
-      <h2 class="heading-lg mb-6">Stop stitching tools. Start training.</h2>
-      <p class="text-white/65 mb-10 max-w-2xl mx-auto">Pulser.Coach is entering early access. Join the waitlist and get priority onboarding plus a seat at the coach advisory board.</p>
-      <div class="flex flex-wrap gap-3 justify-center"><a href="contact.html" class="btn btn-primary btn-lg">Join Early Access</a><a href="platform.html" class="btn btn-ghost btn-lg">See the Platform</a></div>
+      <h2 class="heading-lg mb-6" data-i18n="for_coaches.stop_stitching_tools_start_training">Stop stitching tools. Start training.</h2>
+      <p class="text-white/65 mb-10 max-w-2xl mx-auto" data-i18n="for_coaches.pulsercoach_is_entering_early_access_join_the_waitlist_and_g">Pulser.Coach is entering early access. Join the waitlist and get priority onboarding plus a seat at the coach advisory board.</p>
+      <div class="flex flex-wrap gap-3 justify-center"><a href="contact.html" class="btn btn-primary btn-lg" data-i18n="for_coaches.join_early_access">Join Early Access</a><a href="platform.html" class="btn btn-ghost btn-lg" data-i18n="for_coaches.see_the_platform">See the Platform</a></div>
     </div>
   </section>
 </main>
@@ -132,41 +132,41 @@
           <path d="M 50,24 A 26,26 0 1 1 24,50" stroke="#FF3B47" stroke-width="9" fill="none"/>
           <path d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#FF3B47"/>
         </svg>
-        <span>PULSER</span>
+        <span data-i18n="for_coaches.pulser_2">PULSER</span>
       </div>
       <p class="text-white/55 max-w-sm leading-relaxed">The DeepTech operating system for modern fitness. Gyms, members and coaches — in sync.</p>
       <div class="mt-6 flex flex-wrap gap-2">
-        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">DeepTech</span>
-        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">EHDS-ready</span>
-        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60">Built in the EU</span>
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60" data-i18n="for_coaches.deeptech">DeepTech</span>
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60" data-i18n="for_coaches.ehdsready">EHDS-ready</span>
+        <span class="text-xs px-2.5 py-1 rounded-full border border-white/10 text-white/60" data-i18n="for_coaches.built_in_the_eu">Built in the EU</span>
       </div>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Platform</div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4" data-i18n="for_coaches.platform_3">Platform</div>
       <ul class="space-y-2 text-sm text-white/70">
         <li><a href="platform.html" class="hover:text-white">Overview</a></li>
-        <li><a href="pulser-gym.html" class="hover:text-white">Pulser.Gym</a></li>
-        <li><a href="pulser-one.html" class="hover:text-white">Pulser.One</a></li>
-        <li><a href="pulser-coach.html" class="hover:text-white">Pulser.Coach</a></li>
-        <li><a href="ai-coach.html" class="hover:text-white">AI Coach</a></li>
-        <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+        <li data-i18n="for_coaches.pulsergym"><a href="pulser-gym.html" class="hover:text-white">Pulser.Gym</a></li>
+        <li data-i18n="for_coaches.pulserone"><a href="pulser-one.html" class="hover:text-white">Pulser.One</a></li>
+        <li data-i18n="for_coaches.pulsercoach"><a href="pulser-coach.html" class="hover:text-white">Pulser.Coach</a></li>
+        <li data-i18n="for_coaches.ai_coach"><a href="ai-coach.html" class="hover:text-white">AI Coach</a></li>
+        <li data-i18n="for_coaches.pricing_3"><a href="pricing.html" class="hover:text-white">Pricing</a></li>
       </ul>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Audiences</div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4" data-i18n="for_coaches.audiences">Audiences</div>
       <ul class="space-y-2 text-sm text-white/70">
-        <li><a href="for-gyms.html" class="hover:text-white">For Gyms</a></li>
-        <li><a href="for-members.html" class="hover:text-white">For Members</a></li>
-        <li><a href="for-coaches.html" class="hover:text-white">For Coaches</a></li>
-        <li><a href="investors.html" class="hover:text-white">Investors</a></li>
+        <li data-i18n="for_coaches.for_gyms_3"><a href="for-gyms.html" class="hover:text-white">For Gyms</a></li>
+        <li data-i18n="for_coaches.for_members_3"><a href="for-members.html" class="hover:text-white">For Members</a></li>
+        <li data-i18n="for_coaches.for_coaches_4"><a href="for-coaches.html" class="hover:text-white">For Coaches</a></li>
+        <li data-i18n="for_coaches.investors_3"><a href="investors.html" class="hover:text-white">Investors</a></li>
       </ul>
     </div>
     <div>
-      <div class="text-xs uppercase tracking-widest text-white/40 mb-4">Company</div>
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-4" data-i18n="for_coaches.company">Company</div>
       <ul class="space-y-2 text-sm text-white/70">
-        <li><a href="about.html" class="hover:text-white">About</a></li>
-        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-        <li><a href="mailto:go@pulser.fit" class="hover:text-white">go@pulser.fit</a></li>
+        <li data-i18n="for_coaches.about_3"><a href="about.html" class="hover:text-white">About</a></li>
+        <li data-i18n="for_coaches.contact"><a href="contact.html" class="hover:text-white">Contact</a></li>
+        <li data-i18n="for_coaches.gopulserfit"><a href="mailto:go@pulser.fit" class="hover:text-white">go@pulser.fit</a></li>
       </ul>
     </div>
   </div>
