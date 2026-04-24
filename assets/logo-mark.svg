@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100">
-  <!-- Pulser symbol (matches favicon) -->
-  <g>
-    <path d="M 50,8 A 42,42 0 1 1 8,50" fill="none" stroke="#FF3B47" stroke-width="9"/>
-    <path d="M 50,24 A 26,26 0 1 1 24,50" fill="none" stroke="#FF3B47" stroke-width="9"/>
-    <path d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#FF3B47"/>
-  </g>
-</svg>
