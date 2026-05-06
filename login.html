@@ -67,70 +67,84 @@
 
 <script src="assets/main.js"></script>
 <script>
-  // Wait for Clerk script to load (async script may arrive after 'load' event)
-  function waitForClerk() {
-    return new Promise((resolve) => {
+  (async function initClerk() {
+    const container = document.getElementById('clerk-sign-in');
+    container.innerHTML = '<p class="text-center text-white/40 text-sm py-8">Loading…</p>';
+
+    // Wait for Clerk script
+    const clerk = await new Promise((resolve) => {
       if (window.Clerk) return resolve(window.Clerk);
       const iv = setInterval(() => {
         if (window.Clerk) { clearInterval(iv); resolve(window.Clerk); }
       }, 50);
-      setTimeout(() => { clearInterval(iv); resolve(null); }, 10000); // 10s timeout
+      setTimeout(() => { clearInterval(iv); resolve(null); }, 10000);
     });
-  }
-  window.addEventListener('load', async () => {
-    const clerk = await waitForClerk();
-    if (!clerk) return;
-    await clerk.load({
-      appearance: {
-        variables: {
-          colorPrimary: '#FF3B47',
-          colorBackground: '#12121A',
-          colorText: '#ffffff',
-          colorTextSecondary: 'rgba(255,255,255,0.55)',
-          colorInputBackground: 'rgba(255,255,255,0.06)',
-          colorInputText: '#ffffff',
-          borderRadius: '0.5rem',
-          fontFamily: 'Inter, sans-serif',
-        },
-        elements: {
-          card: 'bg-transparent shadow-none',
-          rootBox: 'w-full',
-          formButtonPrimary: 'bg-brand hover:bg-brand/90 text-white',
-          footerActionLink: 'text-brand hover:text-brand/80',
-          socialButtonsBlockButton: 'border-white/10 text-white hover:bg-white/5',
-          dividerLine: 'bg-white/10',
-          dividerText: 'text-white/30',
+
+    if (!clerk) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Could not load authentication. Please refresh the page.</p>';
+      return;
+    }
+
+    try {
+      await clerk.load({
+        appearance: {
+          variables: {
+            colorPrimary: '#FF3B47',
+            colorBackground: '#12121A',
+            colorText: '#ffffff',
+            colorTextSecondary: 'rgba(255,255,255,0.55)',
+            colorInputBackground: 'rgba(255,255,255,0.06)',
+            colorInputText: '#ffffff',
+            borderRadius: '0.5rem',
+            fontFamily: 'Inter, sans-serif',
+          },
+          elements: {
+            card: 'bg-transparent shadow-none',
+            rootBox: 'w-full',
+            formButtonPrimary: 'bg-brand hover:bg-brand/90 text-white',
+            footerActionLink: 'text-brand hover:text-brand/80',
+            socialButtonsBlockButton: 'border-white/10 text-white hover:bg-white/5',
+            dividerLine: 'bg-white/10',
+            dividerText: 'text-white/30',
+          }
         }
-      }
-    });
+      });
+    } catch (err) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
+      console.error('Clerk load error:', err);
+      return;
+    }
+
     if (clerk.user) {
-      // Already signed in — show status instead of redirecting
-      const container = document.getElementById('clerk-sign-in');
       const name = clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress || 'there';
-      container.innerHTML = `
-        <div class="text-center py-8">
-          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4">
-            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <p class="text-lg font-semibold mb-1">Hey ${name}!</p>
-          <p class="text-white/50 text-sm mb-6">You're already signed in.</p>
-          <div class="flex flex-col gap-3 max-w-xs mx-auto">
-            <a href="index.html" class="btn btn-primary justify-center">Go to homepage</a>
-            <button id="sign-out-btn" class="btn btn-ghost justify-center text-sm">Sign out</button>
-          </div>
-        </div>`;
+      container.innerHTML =
+        '<div class="text-center py-8">' +
+        '<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
+        '<p class="text-lg font-semibold mb-1">Hey ' + name + '!</p>' +
+        '<p class="text-white/50 text-sm mb-6">You\'re already signed in.</p>' +
+        '<div class="flex flex-col gap-3 max-w-xs mx-auto">' +
+        '<a href="index.html" class="btn btn-primary justify-center">Go to homepage</a>' +
+        '<button id="sign-out-btn" class="btn btn-ghost justify-center text-sm">Sign out</button>' +
+        '</div></div>';
       document.getElementById('sign-out-btn').addEventListener('click', async () => {
         await clerk.signOut();
         window.location.reload();
       });
       return;
     }
-    clerk.mountSignIn(document.getElementById('clerk-sign-in'), {
-      afterSignInUrl: 'index.html',
-      afterSignUpUrl: 'index.html',
-      signUpUrl: 'signup.html',
-    });
-  });
+
+    try {
+      container.innerHTML = '';
+      clerk.mountSignIn(container, {
+        afterSignInUrl: 'index.html',
+        afterSignUpUrl: 'index.html',
+        signUpUrl: 'signup.html',
+      });
+    } catch (err) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Mount error: ' + err.message + '</p>';
+      console.error('Clerk mount error:', err);
+    }
+  })();
 </script>
 </body>
 </html>
