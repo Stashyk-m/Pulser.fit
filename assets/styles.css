@@ -54,6 +54,61 @@ main, header, footer, section {
   z-index: 1;
 }
 
+/* Language switcher */
+.lang-switch {
+  display: inline-flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.lang-switch button {
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: all 0.15s;
+}
+.lang-switch button.is-active-lang {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+}
+.lang-switch button:hover:not(.is-active-lang) {
+  color: rgba(255,255,255,0.7);
+}
+.lang-switch {
+  position: relative;
+}
+.lang-switch::after {
+  content: attr(data-lang-notice);
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  white-space: nowrap;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(255,255,255,0.35);
+  background: rgba(18,18,26,0.95);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 4px 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s;
+  z-index: 50;
+}
+.lang-switch:hover::after {
+  opacity: 1;
+}
+
 /* Typography */
 .heading-xl {
   font-size: clamp(2.5rem, 6vw, 5rem);

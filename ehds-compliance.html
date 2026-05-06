@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EHDS Compliance for Gyms & Fitness Apps | Pulser</title>
+<title data-i18n="ehds.page_title">EHDS Compliance for Gyms & Fitness Apps | Pulser</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta name="description" content="How the European Health Data Space affects gyms, fitness apps, and coaching platforms — and how Pulser is built for EHDS compliance from day one." />
+<meta name="description" content="How the European Health Data Space affects gyms, fitness apps, and coaching platforms — and how Pulser is built for EHDS compliance from day one." data-i18n-meta="ehds.meta_desc" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -92,7 +92,8 @@
       <span>PULSER</span>
     </a>
     <nav class="hidden md:flex items-center gap-8"><a href="platform.html" class="nav-link" data-nav>Platform</a><a href="for-gyms.html" class="nav-link" data-nav>For Gyms</a><a href="for-members.html" class="nav-link" data-nav>For Members</a><a href="for-coaches.html" class="nav-link" data-nav>For Coaches</a><a href="pricing.html" class="nav-link" data-nav>Pricing</a><a href="roadmap.html" class="nav-link" data-nav>Roadmap</a><a href="about.html" class="nav-link" data-nav>About</a><a href="investors.html" class="nav-link" data-nav>Investors</a></nav>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-3"><div class="lang-switch"><button data-lang-btn="en" class="is-active-lang">EN</button><button data-lang-btn="pl">PL</button></div>
+      <a href="login.html" class="nav-link hidden sm:inline-flex text-sm" data-i18n="shared.sign_in">Sign In</a>
       <a href="contact.html" class="btn btn-primary hidden sm:inline-flex">Book a Demo</a>
       <button data-menu-toggle aria-label="Menu" aria-expanded="false" class="md:hidden p-2 border border-white/10 rounded-lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -108,23 +109,23 @@
 
   <section class="pt-20 pb-16 md:pt-24">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="eyebrow mb-5">EHDS &middot; European Health Data Space</div>
-      <h1 class="heading-xl mb-6">EHDS is coming. <span class="gradient-red">Is your gym ready?</span></h1>
-      <p class="text-lg text-white/65 max-w-2xl mx-auto mb-10">The European Health Data Space regulation goes live in 2026. If your gym software handles body scans, wearable data, heart rate, or movement analysis — it&rsquo;s in scope. Here&rsquo;s what you need to know.</p>
+      <div class="eyebrow mb-5" data-i18n="ehds.eyebrow">EHDS &middot; European Health Data Space</div>
+      <h1 class="heading-xl mb-6" data-i18n="ehds.hero_h1">EHDS is coming. <span class="gradient-red">Is your gym ready?</span></h1>
+      <p class="text-lg text-white/65 max-w-2xl mx-auto mb-10" data-i18n="ehds.hero_p">The European Health Data Space regulation goes live in 2026. If your gym software handles body scans, wearable data, heart rate, or movement analysis — it&rsquo;s in scope. Here&rsquo;s what you need to know.</p>
     </div>
   </section>
 
   <section class="pb-20">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="heading-lg mb-8">What is EHDS?</h2>
+      <h2 class="heading-lg mb-8" data-i18n="ehds.what_is_ehds_h2">What is EHDS?</h2>
       <div class="card p-8">
-        <p class="text-white/70 mb-4">The <strong class="text-white">European Health Data Space</strong> is an EU-wide regulation that creates a unified framework for how health data is collected, stored, shared, and ported across the EU. It complements GDPR with sector-specific rules for health data.</p>
-        <p class="text-white/70 mb-4">Unlike GDPR (which is about data protection broadly), EHDS specifically addresses:</p>
+        <p class="text-white/70 mb-4" data-i18n="ehds.what_is_ehds_p1">The <strong class="text-white">European Health Data Space</strong> is an EU-wide regulation that creates a unified framework for how health data is collected, stored, shared, and ported across the EU. It complements GDPR with sector-specific rules for health data.</p>
+        <p class="text-white/70 mb-4" data-i18n="ehds.what_is_ehds_p2">Unlike GDPR (which is about data protection broadly), EHDS specifically addresses:</p>
         <div class="grid md:grid-cols-2 gap-4 mt-6">
-          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm">Data portability</h3><p class="text-xs text-white/55">Users must be able to export their health data in interoperable formats and move it between providers.</p></div>
-          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm">Consent &amp; access</h3><p class="text-xs text-white/55">Explicit, granular consent for every health data use case. Users control who sees what, and can revoke at any time.</p></div>
-          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm">Secondary use</h3><p class="text-xs text-white/55">Anonymised health data can be used for research and public health — but only through regulated access bodies.</p></div>
-          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm">Cross-border access</h3><p class="text-xs text-white/55">Health data must be accessible across EU member states, enabling continuity of care (and training) across borders.</p></div>
+          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm" data-i18n="ehds.portability_h3">Data portability</h3><p class="text-xs text-white/55" data-i18n="ehds.portability_p">Users must be able to export their health data in interoperable formats and move it between providers.</p></div>
+          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm" data-i18n="ehds.consent_h3">Consent &amp; access</h3><p class="text-xs text-white/55" data-i18n="ehds.consent_p">Explicit, granular consent for every health data use case. Users control who sees what, and can revoke at any time.</p></div>
+          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm" data-i18n="ehds.secondary_h3">Secondary use</h3><p class="text-xs text-white/55" data-i18n="ehds.secondary_p">Anonymised health data can be used for research and public health — but only through regulated access bodies.</p></div>
+          <div class="p-4 rounded-lg bg-white/5"><h3 class="font-semibold mb-2 text-sm" data-i18n="ehds.crossborder_h3">Cross-border access</h3><p class="text-xs text-white/55" data-i18n="ehds.crossborder_p">Health data must be accessible across EU member states, enabling continuity of care (and training) across borders.</p></div>
         </div>
       </div>
     </div>
@@ -132,19 +133,19 @@
 
   <section class="pb-20">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="heading-lg mb-8">Does this apply to fitness?</h2>
+      <h2 class="heading-lg mb-8" data-i18n="ehds.applies_h2">Does this apply to fitness?</h2>
       <div class="space-y-4">
         <div class="card p-6">
-          <h3 class="font-semibold mb-2">Yes — if you touch health-adjacent data</h3>
-          <p class="text-sm text-white/60">Body composition scans, heart rate monitoring, movement analysis, injury assessments, fatigue scoring, wearable integrations (Apple Health, Garmin, Whoop, Oura) — all of these generate health data under EHDS definitions.</p>
+          <h3 class="font-semibold mb-2" data-i18n="ehds.applies_yes_h3">Yes — if you touch health-adjacent data</h3>
+          <p class="text-sm text-white/60" data-i18n="ehds.applies_yes_p">Body composition scans, heart rate monitoring, movement analysis, injury assessments, fatigue scoring, wearable integrations (Apple Health, Garmin, Whoop, Oura) — all of these generate health data under EHDS definitions.</p>
         </div>
         <div class="card p-6">
-          <h3 class="font-semibold mb-2">Most gym software wasn&rsquo;t built for this</h3>
-          <p class="text-sm text-white/60">Legacy platforms like Mindbody, Glofox, and Virtuagym were designed for scheduling and payments. They weren&rsquo;t architected to handle health data portability, granular consent, or cross-border data access. Retrofitting compliance is expensive and risky.</p>
+          <h3 class="font-semibold mb-2" data-i18n="ehds.applies_legacy_h3">Most gym software wasn&rsquo;t built for this</h3>
+          <p class="text-sm text-white/60" data-i18n="ehds.applies_legacy_p">Legacy platforms like Mindbody, Glofox, and Virtuagym were designed for scheduling and payments. They weren&rsquo;t architected to handle health data portability, granular consent, or cross-border data access. Retrofitting compliance is expensive and risky.</p>
         </div>
         <div class="card p-6">
-          <h3 class="font-semibold mb-2">The deadline is real</h3>
-          <p class="text-sm text-white/60">EHDS enforcement begins in 2026. Platforms that can&rsquo;t demonstrate compliance risk fines, forced data migration, and loss of the ability to process EU member health data.</p>
+          <h3 class="font-semibold mb-2" data-i18n="ehds.applies_deadline_h3">The deadline is real</h3>
+          <p class="text-sm text-white/60" data-i18n="ehds.applies_deadline_p">EHDS enforcement begins in 2026. Platforms that can&rsquo;t demonstrate compliance risk fines, forced data migration, and loss of the ability to process EU member health data.</p>
         </div>
       </div>
     </div>
@@ -152,22 +153,22 @@
 
   <section class="pb-20">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="heading-lg mb-8">How Pulser handles EHDS</h2>
-      <p class="text-white/65 mb-8">Pulser wasn&rsquo;t retrofitted for EHDS. It was <strong class="text-white">designed for it from day one</strong>. Every data touchpoint in the platform is built with compliance as a first-class constraint.</p>
+      <h2 class="heading-lg mb-8" data-i18n="ehds.how_pulser_h2">How Pulser handles EHDS</h2>
+      <p class="text-white/65 mb-8" data-i18n="ehds.how_pulser_p">Pulser wasn&rsquo;t retrofitted for EHDS. It was <strong class="text-white">designed for it from day one</strong>. Every data touchpoint in the platform is built with compliance as a first-class constraint.</p>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">01</div><h3 class="font-semibold mb-2">Edge-first processing</h3><p class="text-sm text-white/60">Movement analysis and body scan data are processed on-device where possible. Sensitive data doesn&rsquo;t leave the user&rsquo;s phone unless explicitly consented.</p></div>
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">02</div><h3 class="font-semibold mb-2">Granular consent</h3><p class="text-sm text-white/60">Every data category (movement, body composition, wearables, injury scoring) has its own consent toggle. Users control exactly what&rsquo;s shared, with whom, and can revoke at any time.</p></div>
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">03</div><h3 class="font-semibold mb-2">Portable data formats</h3><p class="text-sm text-white/60">All health data is exportable in interoperable formats. Members can take their training history, body scan results, and health metrics to any provider.</p></div>
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">04</div><h3 class="font-semibold mb-2">Cross-border ready</h3><p class="text-sm text-white/60">The Pulser cross-gym network already handles multi-country data flows. EHDS cross-border access requirements align with how the platform already works.</p></div>
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">05</div><h3 class="font-semibold mb-2">Audit trail</h3><p class="text-sm text-white/60">Every data access, consent change, and export is logged. Full accountability chain for regulatory review.</p></div>
-        <div class="card p-6"><div class="text-brand text-2xl mb-3">06</div><h3 class="font-semibold mb-2">No retrofitting needed</h3><p class="text-sm text-white/60">Gyms running on Pulser are EHDS-compliant by default. No extra modules, no compliance add-ons, no consultants.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">01</div><h3 class="font-semibold mb-2" data-i18n="ehds.edge_h3">Edge-first processing</h3><p class="text-sm text-white/60" data-i18n="ehds.edge_p">Movement analysis and body scan data are processed on-device where possible. Sensitive data doesn&rsquo;t leave the user&rsquo;s phone unless explicitly consented.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">02</div><h3 class="font-semibold mb-2" data-i18n="ehds.granular_h3">Granular consent</h3><p class="text-sm text-white/60" data-i18n="ehds.granular_p">Every data category (movement, body composition, wearables, injury scoring) has its own consent toggle. Users control exactly what&rsquo;s shared, with whom, and can revoke at any time.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">03</div><h3 class="font-semibold mb-2" data-i18n="ehds.portable_h3">Portable data formats</h3><p class="text-sm text-white/60" data-i18n="ehds.portable_p">All health data is exportable in interoperable formats. Members can take their training history, body scan results, and health metrics to any provider.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">04</div><h3 class="font-semibold mb-2" data-i18n="ehds.crossborder_ready_h3">Cross-border ready</h3><p class="text-sm text-white/60" data-i18n="ehds.crossborder_ready_p">The Pulser cross-gym network already handles multi-country data flows. EHDS cross-border access requirements align with how the platform already works.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">05</div><h3 class="font-semibold mb-2" data-i18n="ehds.audit_h3">Audit trail</h3><p class="text-sm text-white/60" data-i18n="ehds.audit_p">Every data access, consent change, and export is logged. Full accountability chain for regulatory review.</p></div>
+        <div class="card p-6"><div class="text-brand text-2xl mb-3">06</div><h3 class="font-semibold mb-2" data-i18n="ehds.no_retrofit_h3">No retrofitting needed</h3><p class="text-sm text-white/60" data-i18n="ehds.no_retrofit_p">Gyms running on Pulser are EHDS-compliant by default. No extra modules, no compliance add-ons, no consultants.</p></div>
       </div>
     </div>
   </section>
 
   <section class="pb-20">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="heading-lg mb-8">Frequently asked questions</h2>
+      <h2 class="heading-lg mb-8" data-i18n="ehds.faq_h2">Frequently asked questions</h2>
       <div class="space-y-3">
         <div class="card p-6"><h3 class="font-semibold mb-2">What is EHDS?</h3><p class="text-sm text-white/60">The European Health Data Space is an EU regulation creating a unified framework for health data access, sharing, and portability across the European Union. It goes into effect in 2026.</p></div>
         <div class="card p-6"><h3 class="font-semibold mb-2">Does EHDS apply to gyms and fitness apps?</h3><p class="text-sm text-white/60">Yes. Any platform that collects health-related data — body composition, heart rate, movement analysis, injury assessments — falls under EHDS scope. This includes gym management software, fitness apps, and coaching platforms.</p></div>
@@ -179,8 +180,8 @@
 
   <section class="py-20 border-t border-white/5">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="heading-lg mb-6">Get compliant. Stay compliant.</h2>
-      <p class="text-white/65 mb-8 max-w-xl mx-auto">Book a demo and we&rsquo;ll walk you through exactly how Pulser handles your gym&rsquo;s health data — from member body scans to wearable integrations — in full EHDS compliance.</p>
+      <h2 class="heading-lg mb-6" data-i18n="ehds.cta_h2">Get compliant. Stay compliant.</h2>
+      <p class="text-white/65 mb-8 max-w-xl mx-auto" data-i18n="ehds.cta_p">Book a demo and we&rsquo;ll walk you through exactly how Pulser handles your gym&rsquo;s health data — from member body scans to wearable integrations — in full EHDS compliance.</p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="contact.html" class="btn btn-primary btn-lg">Book a Demo</a>
         <a href="privacy.html" class="btn btn-ghost btn-lg">Read Our Privacy Policy</a>

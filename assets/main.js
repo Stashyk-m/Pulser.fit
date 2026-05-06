@@ -1,6 +1,68 @@
 // Pulser.fit shared interactions
 
-document.addEventListener('DOMContentLoaded', () => {
+/* ── i18n engine ─────────────────────────────────────────────── */
+const SUPPORTED_LANGS = ['en', 'pl'];
+const DEFAULT_LANG = 'en';
+let _translations = null;
+let _currentLang = DEFAULT_LANG;
+
+function detectLang() {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang && SUPPORTED_LANGS.includes(urlLang)) return urlLang;
+  const stored = localStorage.getItem('pulser_lang');
+  if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
+  const browser = (navigator.language || '').slice(0, 2).toLowerCase();
+  if (SUPPORTED_LANGS.includes(browser)) return browser;
+  return DEFAULT_LANG;
+}
+
+async function loadTranslations(lang) {
+  if (lang === 'en') { _translations = null; return; }
+  try {
+    const base = document.querySelector('script[src*="main.js"]')?.src.replace('main.js', '') || 'assets/';
+    const resp = await fetch(base + 'i18n/' + lang + '.json');
+    if (resp.ok) _translations = await resp.json();
+  } catch (e) { _translations = null; }
+}
+
+function applyTranslations() {
+  if (!_translations) return;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (_translations[key]) el.innerHTML = _translations[key];
+  });
+  document.querySelectorAll('[data-i18n-meta]').forEach(el => {
+    const key = el.getAttribute('data-i18n-meta');
+    if (_translations[key]) el.setAttribute('content', _translations[key]);
+  });
+  document.documentElement.lang = _currentLang;
+}
+
+function updateLangSwitcher() {
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    const lang = btn.getAttribute('data-lang-btn');
+    btn.classList.toggle('is-active-lang', lang === _currentLang);
+  });
+}
+
+async function switchLang(lang) {
+  if (!SUPPORTED_LANGS.includes(lang)) return;
+  _currentLang = lang;
+  localStorage.setItem('pulser_lang', lang);
+  if (lang === 'en') {
+    // Reload page to restore original English HTML
+    const url = new URL(window.location);
+    url.searchParams.delete('lang');
+    window.location = url.toString();
+    return;
+  }
+  await loadTranslations(lang);
+  applyTranslations();
+  updateLangSwitcher();
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
   // Mobile menu toggle
   const toggle = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-mobile-menu]');
@@ -34,6 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.12 }
   );
   document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+
+  // ── Language switcher click handlers ──
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchLang(btn.getAttribute('data-lang-btn'));
+    });
+  });
+
+  // ── i18n: load and apply ──
+  _currentLang = detectLang();
+  if (_currentLang !== 'en') {
+    await loadTranslations(_currentLang);
+    applyTranslations();
+  }
+  updateLangSwitcher();
+
+  // ── Language notice tooltip ──
+  document.querySelectorAll('.lang-switch').forEach(sw => {
+    const notice = _currentLang === 'pl'
+      ? 'Więcej języków wkrótce'
+      : 'More languages coming soon';
+    sw.setAttribute('data-lang-notice', notice);
+  });
 
   // ── Billing toggle (monthly / annual) ──
   initBillingToggle();
