@@ -67,8 +67,18 @@
 
 <script src="assets/main.js"></script>
 <script>
+  // Wait for Clerk script to load (async script may arrive after 'load' event)
+  function waitForClerk() {
+    return new Promise((resolve) => {
+      if (window.Clerk) return resolve(window.Clerk);
+      const iv = setInterval(() => {
+        if (window.Clerk) { clearInterval(iv); resolve(window.Clerk); }
+      }, 50);
+      setTimeout(() => { clearInterval(iv); resolve(null); }, 10000); // 10s timeout
+    });
+  }
   window.addEventListener('load', async () => {
-    const clerk = window.Clerk;
+    const clerk = await waitForClerk();
     if (!clerk) return;
     await clerk.load({
       appearance: {
