@@ -39,7 +39,14 @@ function applyTranslations() {
   document.documentElement.lang = _currentLang;
 }
 
+const LANG_LABELS = { en: 'English', pl: 'Polski' };
+
 function updateLangSwitcher() {
+  // Update trigger label
+  document.querySelectorAll('.lang-dropdown-trigger-label').forEach(el => {
+    el.textContent = (_currentLang || 'en').toUpperCase();
+  });
+  // Update active state in menu
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     const lang = btn.getAttribute('data-lang-btn');
     btn.classList.toggle('is-active-lang', lang === _currentLang);
@@ -97,12 +104,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   );
   document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
 
-  // ── Language switcher click handlers ──
-  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      switchLang(btn.getAttribute('data-lang-btn'));
+  // ── Language dropdown ──
+  document.querySelectorAll('.lang-dropdown').forEach(dd => {
+    const trigger = dd.querySelector('.lang-dropdown-trigger');
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other open dropdowns
+        document.querySelectorAll('.lang-dropdown.is-open').forEach(other => {
+          if (other !== dd) other.classList.remove('is-open');
+        });
+        dd.classList.toggle('is-open');
+      });
+    }
+    dd.querySelectorAll('[data-lang-btn]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        dd.classList.remove('is-open');
+        switchLang(btn.getAttribute('data-lang-btn'));
+      });
     });
+  });
+  // Close dropdown on outside click
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.lang-dropdown.is-open').forEach(dd => dd.classList.remove('is-open'));
   });
 
   // ── i18n: load and apply ──
@@ -112,14 +137,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     applyTranslations();
   }
   updateLangSwitcher();
-
-  // ── Language notice tooltip ──
-  document.querySelectorAll('.lang-switch').forEach(sw => {
-    const notice = _currentLang === 'pl'
-      ? 'Więcej języków wkrótce'
-      : 'More languages coming soon';
-    sw.setAttribute('data-lang-notice', notice);
-  });
 
   // ── Billing toggle (monthly / annual) ──
   initBillingToggle();
