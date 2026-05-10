@@ -24,7 +24,7 @@
 <link rel="canonical" href="https://pulser.fit/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config = { theme: { extend: { colors: { brand: '#CB0020', bg: '#080808' } } } };</script>
 <link rel="stylesheet" href="assets/styles.css" />
@@ -116,10 +116,10 @@
   }
 
   .hero-stat-num {
-    font-family: var(--font-mono);
+    font-family: var(--font-display);
     font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 500;
-    letter-spacing: -0.04em;
+    font-weight: 800;
+    letter-spacing: -0.045em;
     line-height: 1;
   }
 
@@ -180,8 +180,12 @@
     line-height: 1;
   }
 
-  /* The dot-suffix (.GYM / .ONE / .COACH) in accent red */
-  .product-name .suffix { color: var(--accent); }
+  /* The dot-suffix (.GYM / .ONE / .COACH) in accent red, smaller than prefix */
+  .product-name .suffix {
+    color: var(--accent);
+    font-size: 0.65em;
+    letter-spacing: -0.02em;
+  }
 
   .product-body {
     font-size: 0.9rem;
@@ -307,7 +311,7 @@
 
   .roi-row-label { color: var(--text-muted); }
 
-  .roi-row-val { font-weight: 700; font-family: var(--font-mono); }
+  .roi-row-val { font-weight: 700; font-family: var(--font-display); letter-spacing: -0.03em; }
 
   .roi-row-val.accent { color: var(--accent); }
 
@@ -326,10 +330,10 @@
   .stat-band-item:last-child { border-right: none; }
 
   .stat-band-num {
-    font-family: var(--font-mono);
+    font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 500;
-    letter-spacing: -0.04em;
+    font-weight: 800;
+    letter-spacing: -0.045em;
     line-height: 1;
     color: var(--accent);
     margin-bottom: 0.75rem;
