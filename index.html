@@ -24,7 +24,7 @@
 <link rel="canonical" href="https://pulser.fit/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config = { theme: { extend: { colors: { brand: '#CB0020', bg: '#080808' } } } };</script>
 <link rel="stylesheet" href="assets/styles.css" />
@@ -72,13 +72,13 @@
 
   .hero-h1 {
     font-family: var(--font-display);
-    font-size: clamp(3.5rem, 9vw, 6.5rem);
-    font-weight: 900;
-    line-height: 0.88;
-    letter-spacing: -0.025em;
+    font-size: clamp(3rem, 7.5vw, 5.5rem);
+    font-weight: 800;
+    line-height: 0.90;
+    letter-spacing: -0.045em;
     text-transform: uppercase;
     margin-bottom: 3.5rem;
-    max-width: 900px;
+    max-width: 860px;
   }
 
   .hero-rule {
@@ -172,13 +172,16 @@
 
   .product-name {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 900;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.03em;
     margin-bottom: 0.85rem;
     line-height: 1;
   }
+
+  /* The dot-suffix (.GYM / .ONE / .COACH) in accent red */
+  .product-name .suffix { color: var(--accent); }
 
   .product-body {
     font-size: 0.9rem;
@@ -229,11 +232,11 @@
   .moat-attr-title {
     font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 0.5rem;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
   }
 
   .moat-attr-body {
@@ -260,10 +263,10 @@
   .crossgym-title {
     font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 0.75rem;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
   }
 
   /* ROI comparison */
@@ -362,10 +365,10 @@
   .moat-block-copy {
     font-family: var(--font-display);
     font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 900;
+    font-weight: 800;
     text-transform: uppercase;
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
     color: #fff;
   }
 
@@ -554,20 +557,20 @@
 
         <div class="product-grid">
           <a href="for-gyms.html" class="product-col" style="display: block;">
-            <div class="product-num">01</div>
-            <div class="product-name">Pulser.<span style="color:var(--accent)" data-i18n="home.pulsergym">Gym</span></div>
+            <div class="product-num eyebrow" style="color:var(--accent); margin-bottom:1.25rem;">01 &nbsp;·&nbsp; <span data-i18n="home.for_gyms">For Gyms</span></div>
+            <div class="product-name">PULSER<span class="suffix">.GYM</span></div>
             <p class="product-body" data-i18n="home.gym_card_body">One OS to replace Mindbody, your member app and your e-commerce stack. Plus the AI that keeps members subscribed.</p>
             <span class="product-link" data-i18n="home.see_pulser_gym_cta">See Pulser.Gym <span aria-hidden="true">→</span></span>
           </a>
           <a href="for-members.html" class="product-col" style="display: block;">
-            <div class="product-num">02</div>
-            <div class="product-name">Pulser.<span style="color:var(--accent)" data-i18n="home.pulserone">One</span></div>
+            <div class="product-num eyebrow" style="color:var(--accent); margin-bottom:1.25rem;">02 &nbsp;·&nbsp; <span data-i18n="home.for_members">For Members</span></div>
+            <div class="product-name">PULSER<span class="suffix">.ONE</span></div>
             <p class="product-body" data-i18n="home.a_free_ai_coach_in_your_pocket_body_scan_form_feedback_perso">A free AI coach in your pocket. Body scan, form feedback, personalised plans — and cross-gym access across the network.</p>
             <span class="product-link" data-i18n="home.see_pulser_one_cta">See Pulser.One <span aria-hidden="true">→</span></span>
           </a>
           <a href="for-coaches.html" class="product-col" style="display: block;">
-            <div class="product-num">03</div>
-            <div class="product-name">Pulser.<span style="color:var(--accent)" data-i18n="home.pulsercoach">Coach</span></div>
+            <div class="product-num eyebrow" style="color:var(--accent); margin-bottom:1.25rem;">03 &nbsp;·&nbsp; <span data-i18n="home.for_coaches">For Coaches</span></div>
+            <div class="product-name">PULSER<span class="suffix">.COACH</span></div>
             <p class="product-body" data-i18n="home.stop_stitching_six_tools_clients_programming_billing_and_liv">Stop stitching six tools. Clients, programming, billing and live movement data in one cockpit.</p>
             <span class="product-link" data-i18n="home.see_pulser_coach_cta">See Pulser.Coach <span aria-hidden="true">→</span></span>
           </a>
