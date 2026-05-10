@@ -20,7 +20,6 @@
   --warning:       #F59E0B;
   --font-display:  'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono:     'DM Mono', 'Courier New', monospace;
 }
 
 *, *::before, *::after {
