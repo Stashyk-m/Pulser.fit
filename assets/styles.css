@@ -2,7 +2,7 @@
    Pulser.fit — Swiss Edition
    Strength in Sync
    Colors : #080808 bg · #CB0020 accent
-   Fonts  : Barlow Condensed (display) · Barlow (body) · DM Mono (data)
+   Fonts  : Inter (display + body) · DM Mono (data numbers)
 --------------------------------------------------------- */
 
 :root {
@@ -18,8 +18,8 @@
   --accent-soft:   rgba(203, 0, 32, 0.10);
   --success:       #22C55E;
   --warning:       #F59E0B;
-  --font-display:  'Barlow Condensed', system-ui, sans-serif;
-  --font-body:     'Barlow', system-ui, sans-serif;
+  --font-display:  'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:     'DM Mono', 'Courier New', monospace;
 }
 
@@ -53,29 +53,29 @@ a { color: inherit; text-decoration: none; }
 
 .heading-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 7vw, 5.2rem);
-  font-weight: 900;
+  font-size: clamp(2.6rem, 6.5vw, 5rem);
+  font-weight: 800;
   line-height: 0.92;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.045em;
   text-transform: uppercase;
 }
 
 .heading-lg {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: 900;
+  font-size: clamp(1.9rem, 4vw, 3.25rem);
+  font-weight: 800;
   line-height: 0.94;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
 }
 
 .heading-md {
   font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
   font-weight: 700;
   line-height: 1;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
 }
 
 .eyebrow {
