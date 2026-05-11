@@ -35,30 +35,13 @@
     "applicationCategory": "HealthApplication",
     "operatingSystem": "iOS, Android, Web",
     "offers": [
-      {
-        "@type": "Offer",
-        "name": "Pulser.One Free",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      {
-        "@type": "Offer",
-        "name": "Pulser.One Premium",
-        "price": "9.99",
-        "priceCurrency": "EUR"
-      },
-      {
-        "@type": "Offer",
-        "name": "Pulser.Gym Starter",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      {
-        "@type": "Offer",
-        "name": "Pulser.Gym Pro",
-        "price": "199",
-        "priceCurrency": "EUR"
-      }
+      { "@type": "Offer", "name": "Pulser.Gym Trial", "price": "0", "priceCurrency": "EUR", "description": "14-day full access trial" },
+      { "@type": "Offer", "name": "Pulser.Gym Free", "price": "0", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Pulser.Gym Starter", "price": "99", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Pulser.Gym Pro", "price": "199", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Pulser.Gym Scale", "price": "299", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Pulser.One Free", "price": "0", "priceCurrency": "EUR" },
+      { "@type": "Offer", "name": "Pulser.One Premium", "price": "9.99", "priceCurrency": "EUR" }
     ]
   }</script>
 <script type="application/ld+json">{
@@ -189,76 +172,109 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div><div class="eyebrow mb-3" data-i18n="pricing.pulsergym_for_operators">Pulser.Gym · For operators</div><h2 class="heading-lg" data-i18n="pricing.run_your_gym_on_one_platform">Run your gym on one platform.</h2></div>
-        <div class="inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 shrink-0">
+        <div class="inline-flex items-center gap-3 px-4 py-2.5 border border-white/10 bg-white/5 shrink-0">
           <span class="text-sm font-medium billing-label" data-billing="monthly" data-i18n="pricing.monthly">Monthly</span>
-          <button id="billing-toggle" class="relative w-12 h-6 rounded-full bg-white/15 transition-colors" aria-label="Toggle annual billing">
-            <span id="billing-knob" class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-transform"></span>
+          <button id="billing-toggle" class="relative w-12 h-6 bg-white/15 transition-colors" aria-label="Toggle annual billing">
+            <span id="billing-knob" class="absolute top-0.5 left-0.5 w-5 h-5 bg-white transition-transform"></span>
           </button>
           <span class="text-sm font-medium billing-label text-white/50" data-billing="annual" data-i18n="pricing.annual">Annual</span>
-          <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-brand/20 text-brand" data-i18n="pricing.save_15">Save 15%</span>
+          <span class="text-xs font-semibold px-2 py-0.5 bg-brand/20 text-brand" data-i18n="pricing.save_15">Save 15%</span>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-5">
+
+      <!-- Trial banner -->
+      <div class="card card-accent mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div class="flex items-center gap-5">
+          <div class="w-12 h-12 bg-brand/15 border border-brand/30 flex items-center justify-center shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CB0020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="text-lg font-bold uppercase tracking-tight" data-i18n="pricing.gym_trial_name">Trial</span>
+              <span class="text-xs px-2 py-0.5 bg-brand/20 text-brand font-semibold uppercase tracking-widest" data-i18n="pricing.gym_trial_badge">14 days</span>
+            </div>
+            <p class="text-sm text-white/60" data-i18n="pricing.gym_trial_desc">Full access to every feature — no credit card required. After 14 days, choose the plan that fits.</p>
+          </div>
+        </div>
+        <div class="flex items-baseline gap-1 shrink-0">
+          <span class="text-4xl font-bold">€0</span>
+          <span class="text-white/50 text-sm" data-i18n="pricing.gym_trial_period">/ 14 days</span>
+        </div>
+      </div>
+
+      <!-- 4-plan grid: Free · Starter · Pro · Scale -->
+      <div class="grid md:grid-cols-4 gap-5">
+
+        <!-- Free -->
+        <div class="card">
+          <div class="text-sm uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.gym_free_label">Gym · Free</div>
+          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold">€0</span><span class="text-white/60 text-sm" data-i18n="pricing.mo_free">/mo</span></div>
+          <p class="text-white/60 mb-6 text-sm leading-relaxed" data-i18n="pricing.gym_free_desc">Core tools to run a small gym — forever free, no time limit.</p>
+          <a href="signup.html" class="btn btn-ghost w-full justify-center mb-6" data-i18n="pricing.get_started">Get started</a>
+          <div class="text-xs uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.includes">Includes</div>
+          <ul class="space-y-2 text-sm text-white/70">
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_free_f1">Member CRM (up to 25)</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_free_f2">Class scheduling</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_free_f3">Check-in</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_free_f4">1 location</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_free_no1">AI Coach</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_free_no2">Branded app</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_free_no3">E-commerce</span></li>
+          </ul>
+        </div>
+
         <!-- Starter -->
         <div class="card">
           <div class="text-sm uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.gym_starter">Gym · Starter</div>
-          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold" data-i18n="pricing.free">Free</span></div>
-          <p class="text-white/60 mb-6 text-sm leading-relaxed" data-i18n="pricing.replace_your_scheduling_tool_today_solo_trainers_and_new_stu">Get started with Pulser — ideal for solo trainers and micro-studios testing the waters.</p>
+          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold" data-price="99" data-price-annual="84">€99</span><span class="text-white/60 billing-suffix text-sm" data-i18n="pricing.mo_starter">/mo</span></div>
+          <p class="text-white/60 mb-6 text-sm leading-relaxed" data-i18n="pricing.gym_starter_desc">The full management suite for growing studios and independent gyms.</p>
           <a href="contact.html" class="btn btn-ghost w-full justify-center mb-6" data-i18n="pricing.get_started">Get started</a>
           <div class="text-xs uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.includes">Includes</div>
           <ul class="space-y-2 text-sm text-white/70">
-            <li class="flex gap-2" data-i18n="pricing.member_crm_up_to_25"><span class="text-brand">✓</span> Member CRM (up to 25)</li>
-            <li class="flex gap-2" data-i18n="pricing.single_location_only"><span class="text-brand">✓</span> Single location only</li>
-            <li class="flex gap-2" data-i18n="pricing.basic_class_scheduling"><span class="text-brand">✓</span> Basic class scheduling</li>
-            <li class="flex gap-2" data-i18n="pricing.basic_payments"><span class="text-brand">✓</span> Basic payments</li>
-            <li class="flex gap-2" data-i18n="pricing.web_checkin"><span class="text-brand">✓</span> Web check-in</li>
-            <li class="flex gap-2" data-i18n="pricing.basic_analytics_only"><span class="text-brand">✓</span> Basic analytics only</li>
-            <li class="flex gap-2 text-white/40" data-i18n="pricing.ai_coach_for_operators"><span>—</span> AI Coach for operators</li>
-            <li class="flex gap-2 text-white/40" data-i18n="pricing.branded_app"><span>—</span> Branded app</li>
-            <li class="flex gap-2 text-white/40" data-i18n="pricing.ecommerce_storefront_starter"><span>—</span> E-commerce storefront</li>
-            <li class="flex gap-2 text-white/40" data-i18n="pricing.churn_prediction_starter"><span>—</span> Churn prediction</li>
-            <li class="flex gap-2 text-white/40" data-i18n="pricing.crossgym_network"><span>—</span> Cross-gym network</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_starter_f1">Basic CRM (up to 50 members)</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_starter_f2">Scheduling</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_starter_f3">Check-in</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_starter_f4">1 location</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_starter_no1">AI Coach</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_starter_no2">Branded app</span></li>
+            <li class="flex gap-2 text-white/40"><span>—</span> <span data-i18n="pricing.gym_starter_no3">E-commerce</span></li>
           </ul>
         </div>
 
         <!-- Pro -->
         <div class="card card-accent glow-red relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand text-white text-xs font-semibold uppercase tracking-widest" data-i18n="pricing.most_popular">Most popular</div>
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-brand text-white text-xs font-semibold uppercase tracking-widest" data-i18n="pricing.most_popular">Most popular</div>
           <div class="text-sm uppercase tracking-widest text-brand mb-3 font-semibold" data-i18n="pricing.gym_pro">Gym · Pro</div>
-          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold" data-price="199" data-price-annual="169">€199</span><span class="text-white/60 billing-suffix" data-i18n="pricing.mo_2">/mo</span></div>
-          <p class="text-white/70 mb-6 text-sm leading-relaxed" data-i18n="pricing.full_management_platform_ai_coach_signals_and_a_fully_brande">Full management platform, AI Coach signals and a fully branded member app. For studios, clubs and chains of any type.</p>
+          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold" data-price="199" data-price-annual="169">€199</span><span class="text-white/60 billing-suffix text-sm" data-i18n="pricing.mo_2">/mo</span></div>
+          <p class="text-white/70 mb-6 text-sm leading-relaxed" data-i18n="pricing.gym_pro_desc">Full platform with AI, a branded app and e-commerce. For clubs of any size.</p>
           <a href="contact.html" class="btn btn-primary w-full justify-center mb-6" data-i18n="pricing.book_a_demo_3">Book a Demo</a>
           <div class="text-xs uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.everything_in_starter_plus">Everything in Starter, plus</div>
           <ul class="space-y-2 text-sm text-white/80">
-            <li class="flex gap-2" data-i18n="pricing.unlimited_members"><span class="text-brand">✓</span> Unlimited members</li>
-            <li class="flex gap-2" data-i18n="pricing.ai_coach_signals_in_operator_dashboard"><span class="text-brand">✓</span> AI Coach signals in operator dashboard</li>
-            <li class="flex gap-2" data-i18n="pricing.branded_ios_android_app"><span class="text-brand">✓</span> Branded iOS + Android app</li>
-            <li class="flex gap-2" data-i18n="pricing.ecommerce_storefront"><span class="text-brand">✓</span> E-commerce storefront</li>
-            <li class="flex gap-2" data-i18n="pricing.churn_prediction_amp_interventions"><span class="text-brand">✓</span> Churn prediction &amp; interventions</li>
-            <li class="flex gap-2" data-i18n="pricing.crossgym_network_reciprocal"><span class="text-brand">✓</span> Cross-gym network (reciprocal)</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_pro_f1">Unlimited members</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_pro_f2">AI Coach</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_pro_f3">Branded App</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_pro_f4">E-commerce</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_pro_f5">Advanced Analytics</span></li>
           </ul>
         </div>
 
-        <!-- Enterprise -->
+        <!-- Scale -->
         <div class="card">
-          <div class="text-sm uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.gym_enterprise">Gym · Enterprise</div>
-          <div class="flex items-baseline gap-2 mb-1"><span class="text-5xl font-bold" data-price="299" data-price-annual="254">€299</span><span class="text-white/60 billing-suffix" data-i18n="pricing.base_mo">base /mo</span></div>
-          <div class="text-sm text-white/50 mb-4" data-i18n="pricing.149_per_additional_gym_location" data-addon-price="149" data-addon-annual="127">+ €149 per additional gym / location</div>
-          <p class="text-white/60 mb-6 text-sm leading-relaxed" data-i18n="pricing.multilocation_chains_franchises_and_premium_clubs_the_base_f">Multi-location chains, franchises and premium clubs. The base fee covers the platform and your first location; each additional gym is €149/mo. Custom SLA, full API, co-branded portal.</p>
+          <div class="text-sm uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.gym_scale_label">Gym · Scale</div>
+          <div class="flex items-baseline gap-2 mb-4"><span class="text-5xl font-bold" data-price="299" data-price-annual="254">€299</span><span class="text-white/60 billing-suffix text-sm" data-i18n="pricing.mo_scale">/mo</span></div>
+          <p class="text-white/60 mb-6 text-sm leading-relaxed" data-i18n="pricing.gym_scale_desc">Multi-location chains, franchises and premium clubs. Full API, SSO, and white-label.</p>
           <a href="contact.html" class="btn btn-ghost w-full justify-center mb-6" data-i18n="pricing.talk_to_sales">Talk to Sales</a>
           <div class="text-xs uppercase tracking-widest text-white/40 mb-3" data-i18n="pricing.everything_in_pro_plus">Everything in Pro, plus</div>
           <ul class="space-y-2 text-sm text-white/70">
-            <li class="flex gap-2" data-i18n="pricing.multilocation_amp_franchises"><span class="text-brand">✓</span> Multi-location &amp; franchises</li>
-            <li class="flex gap-2" data-i18n="pricing.advanced_analytics_suite"><span class="text-brand">✓</span> Advanced analytics suite</li>
-            <li class="flex gap-2" data-i18n="pricing.full_whitelabel_site_app_amp_theming"><span class="text-brand">✓</span> Full white-label site, app &amp; theming</li>
-            <li class="flex gap-2" data-i18n="pricing.rest_amp_webhook_api"><span class="text-brand">✓</span> REST &amp; webhook API</li>
-            <li class="flex gap-2" data-i18n="pricing.sso_amp_scim"><span class="text-brand">✓</span> SSO &amp; SCIM</li>
-            <li class="flex gap-2" data-i18n="pricing.dedicated_success_manager"><span class="text-brand">✓</span> Dedicated success manager</li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f1">Multi-location</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f2">White Label</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f3">SSO</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f4">API Access</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f5">AI Workout Engine</span></li>
+            <li class="flex gap-2"><span class="text-brand">✓</span> <span data-i18n="pricing.gym_scale_f6">Priority Support</span></li>
           </ul>
-          <div class="mt-5 p-3 rounded-lg bg-white/5 border border-white/10 text-xs text-white/55 leading-relaxed">
-            <span class="text-white/80 font-semibold" data-i18n="pricing.example">Example:</span> <span id="gym-example" data-i18n="pricing.gym_example_calc">a 4-location chain pays €299 + (3 × €149) = <span class="text-white">€746/mo</span></span>.
-          </div>
         </div>
+
       </div>
     </div>
   </section>
