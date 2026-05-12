@@ -85,8 +85,12 @@
       return;
     }
 
+    // Detect language for Clerk localization
+    const lang = localStorage.getItem('pulser_lang') || (navigator.language || '').slice(0, 2).toLowerCase();
+    const clerkLocale = (lang === 'pl') ? 'pl-PL' : undefined;
+
     try {
-      await clerk.load({
+      const loadOpts = {
         appearance: {
           variables: {
             colorPrimary: '#CB0020',
@@ -108,23 +112,26 @@
             dividerText: 'text-white/30',
           }
         }
-      });
+      };
+      if (clerkLocale) loadOpts.localization = { locale: clerkLocale };
+      await clerk.load(loadOpts);
     } catch (err) {
-      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8" data-i18n="login.auth_error_errmessage_2">Auth error: ' + err.message + '</p>';
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
       console.error('Clerk load error:', err);
       return;
     }
 
     if (clerk.user) {
       const name = clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress || 'there';
+      const isPl = lang === 'pl';
       container.innerHTML =
-        '<div class="text-center py-8" data-i18n="login.item_3">' +
+        '<div class="text-center py-8">' +
         '<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
-        '<p class="text-lg font-semibold mb-1" data-i18n="login.hey_name_2">Hey ' + name + '!</p>' +
-        '<p class="text-white/50 text-sm mb-6" data-i18n="login.youre_already_signed_in_2">You\'re already signed in.</p>' +
+        '<p class="text-lg font-semibold mb-1">' + (isPl ? 'Hej ' : 'Hey ') + name + '!</p>' +
+        '<p class="text-white/50 text-sm mb-6">' + (isPl ? 'Jesteś już zalogowany/a.' : 'You\'re already signed in.') + '</p>' +
         '<div class="flex flex-col gap-3 max-w-xs mx-auto">' +
-        '<a href="index.html" class="btn btn-primary justify-center" data-i18n="login.go_to_homepage_2">Go to homepage</a>' +
-        '<button id="sign-out-btn" class="btn btn-ghost justify-center text-sm" data-i18n="login.sign_out_2">Sign out</button>' +
+        '<a href="index.html" class="btn btn-primary justify-center">' + (isPl ? 'Strona główna' : 'Go to homepage') + '</a>' +
+        '<button id="sign-out-btn" class="btn btn-ghost justify-center text-sm">' + (isPl ? 'Wyloguj się' : 'Sign out') + '</button>' +
         '</div></div>';
       document.getElementById('sign-out-btn').addEventListener('click', async () => {
         await clerk.signOut();
@@ -137,7 +144,7 @@
       container.innerHTML = '';
       clerk.mountSignIn(container, {
         afterSignInUrl: 'index.html',
-        afterSignUpUrl: 'index.html',
+        afterSignUpUrl: 'welcome.html',
         signUpUrl: 'signup.html',
       });
     } catch (err) {

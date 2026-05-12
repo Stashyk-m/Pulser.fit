@@ -143,7 +143,59 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // ── Cookie consent ──
   initCookieBanner();
+
+  // ── Auth-aware nav ──
+  initAuthNav();
 });
+
+/* ── Auth-aware navigation ─────────────────────────────────────── */
+async function initAuthNav() {
+  // Only run if Clerk script is present on the page
+  // For pages without Clerk, we load it dynamically to check session
+  let clerk = window.Clerk;
+  if (!clerk) {
+    // Try to load Clerk lightly to check session
+    try {
+      const script = document.createElement('script');
+      script.src = 'https://clerk.pulser.fit/npm/@clerk/clerk-js@latest/dist/clerk.browser.js';
+      script.setAttribute('data-clerk-publishable-key', 'pk_live_Y2xlcmsucHVsc2VyLmZpdCQ');
+      script.async = true;
+      document.head.appendChild(script);
+      clerk = await new Promise((resolve) => {
+        script.onload = () => resolve(window.Clerk);
+        script.onerror = () => resolve(null);
+        setTimeout(() => resolve(null), 5000);
+      });
+    } catch (e) { return; }
+  }
+  if (!clerk) return;
+
+  try {
+    // If Clerk not yet loaded (e.g. on login.html it loads separately), wait
+    if (!clerk.user && !clerk.loaded) {
+      await clerk.load();
+    }
+  } catch (e) { return; }
+
+  if (!clerk.user) return;
+
+  // User is signed in — replace "Sign In" links with user menu
+  const signInLinks = document.querySelectorAll('a[href*="login.html"]');
+  const lang = _currentLang || 'en';
+  const dashLabel = lang === 'pl' ? 'Moje konto' : 'My Account';
+
+  signInLinks.forEach(link => {
+    // Only replace nav-level sign-in links, not footer links
+    if (!link.closest('header, .nav')) return;
+    const initial = (clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress || '?')[0].toUpperCase();
+    link.href = 'login.html';
+    link.textContent = dashLabel;
+    link.setAttribute('data-i18n', '');
+    link.style.display = '';
+    // Add a small avatar circle before the text
+    link.innerHTML = '<span style="display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent);color:#fff;font-size:0.65rem;font-weight:700;margin-right:0.4rem;">' + initial + '</span>' + dashLabel;
+  });
+}
 
 /* ── Billing toggle (Gym section only) ───────────────────────── */
 let _isAnnual = false;

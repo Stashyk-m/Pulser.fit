@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Welcome — Pulser</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="Welcome to Pulser. Choose your role to get started." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { colors: { brand: '#CB0020', bg: '#080808', elev: '#12121A' } } } };</script>
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="canonical" href="https://pulser.fit/welcome.html" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#CB0020" />
+<script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="pk_live_Y2xlcmsucHVsc2VyLmZpdCQ"
+  src="https://clerk.pulser.fit/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+  type="text/javascript"
+></script>
+<style>
+  .role-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex: 1;
+    min-width: 220px;
+  }
+  .role-card:hover {
+    border-color: #CB0020;
+    background: rgba(203,0,32,0.06);
+    transform: translateY(-2px);
+  }
+  .role-card.is-selected {
+    border-color: #CB0020;
+    background: rgba(203,0,32,0.1);
+    box-shadow: 0 0 0 1px #CB0020;
+  }
+  .role-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .role-card.is-selected .role-icon {
+    background: rgba(203,0,32,0.2);
+  }
+  .role-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .role-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
+  .continue-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #CB0020;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.85rem 2.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .continue-btn.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .continue-btn.is-active:hover {
+    background: #a8001a;
+  }
+</style>
+</head>
+<body>
+<div class="bg-aura"></div>
+
+<header class="nav">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="logo-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path class="pulse-ring" d="M 50,8 A 42,42 0 1 1 8,50" stroke="#CB0020" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-2" d="M 50,24 A 26,26 0 1 1 24,50" stroke="#CB0020" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-3" d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#CB0020"/>
+      </svg><span>PULSER</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="pt-20 pb-20 md:pt-28">
+    <div class="max-w-2xl mx-auto px-6">
+      <div id="welcome-content">
+        <p class="text-center text-white/40 text-sm py-8">Loading...</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer mt-10">
+  <div class="border-t border-white/5"><div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40"><div>&copy; 2026 Pulser. Part of D-Generative Group. All rights reserved.</div><div class="flex gap-6"><a href="privacy.html" class="hover:text-white/70">Privacy</a><a href="terms.html" class="hover:text-white/70">Terms</a><a href="cookies.html" class="hover:text-white/70">Cookies</a></div></div></div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  (async function initWelcome() {
+    const container = document.getElementById('welcome-content');
+    const lang = localStorage.getItem('pulser_lang') || (navigator.language || '').slice(0, 2).toLowerCase();
+    const isPl = lang === 'pl';
+
+    // Wait for Clerk
+    const clerk = await new Promise((resolve) => {
+      if (window.Clerk) return resolve(window.Clerk);
+      const iv = setInterval(() => {
+        if (window.Clerk) { clearInterval(iv); resolve(window.Clerk); }
+      }, 50);
+      setTimeout(() => { clearInterval(iv); resolve(null); }, 10000);
+    });
+
+    if (!clerk) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">' +
+        (isPl ? 'Nie udalo sie zaladowac uwierzytelniania. Odswiez strone.' : 'Could not load authentication. Please refresh the page.') + '</p>';
+      return;
+    }
+
+    const clerkLocale = isPl ? 'pl-PL' : undefined;
+    try {
+      const loadOpts = {
+        appearance: {
+          variables: {
+            colorPrimary: '#CB0020',
+            colorBackground: '#12121A',
+            colorText: '#ffffff',
+            colorTextSecondary: 'rgba(255,255,255,0.55)',
+            fontFamily: 'Inter, sans-serif',
+          }
+        }
+      };
+      if (clerkLocale) loadOpts.localization = { locale: clerkLocale };
+      await clerk.load(loadOpts);
+    } catch (err) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
+      return;
+    }
+
+    // If not signed in, redirect to signup
+    if (!clerk.user) {
+      window.location.href = 'signup.html';
+      return;
+    }
+
+    // Check if user already has a role set — if so, skip picker
+    const existingRole = clerk.user.unsafeMetadata?.role;
+    if (existingRole) {
+      window.location.href = 'index.html';
+      return;
+    }
+
+    const name = clerk.user.firstName || '';
+    const greeting = name
+      ? (isPl ? 'Witaj, ' + name + '!' : 'Welcome, ' + name + '!')
+      : (isPl ? 'Witaj w Pulser!' : 'Welcome to Pulser!');
+
+    container.innerHTML =
+      '<div class="text-center mb-10">' +
+        '<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-5">' +
+          '<svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>' +
+        '</div>' +
+        '<h1 class="heading-lg mb-3">' + greeting + '</h1>' +
+        '<p class="text-sm text-white/50">' +
+          (isPl ? 'Powiedz nam kim jestes, abysmy mogli dostosowac Twoje doswiadczenie.' : 'Tell us who you are so we can tailor your experience.') +
+        '</p>' +
+      '</div>' +
+      '<div class="flex flex-col sm:flex-row gap-4 mb-8">' +
+        '<div class="role-card" data-role="gym_owner">' +
+          '<div class="role-icon">' +
+            '<svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008V10.5zm0 3h.008v.008h-.008V13.5zm0 3h.008v.008h-.008V16.5z"/></svg>' +
+          '</div>' +
+          '<div class="role-title">' + (isPl ? 'Wlasciciel silowni' : 'Gym Owner') + '</div>' +
+          '<div class="role-desc">' +
+            (isPl ? 'Zarzadzaj obiektem, czlonkami i operacjami za pomoca Pulser.Gym.' : 'Manage your facility, members, and operations with Pulser.Gym.') +
+          '</div>' +
+        '</div>' +
+        '<div class="role-card" data-role="member">' +
+          '<div class="role-icon">' +
+            '<svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>' +
+          '</div>' +
+          '<div class="role-title">' + (isPl ? 'Czlonek / Trener' : 'Member / Coach') + '</div>' +
+          '<div class="role-desc">' +
+            (isPl ? 'Trenuj z AI coachem, sledz postepy i lacz sie ze swoim trenerem.' : 'Train with an AI coach, track progress, and connect with your trainer.') +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="text-center">' +
+        '<button class="continue-btn" id="continue-btn">' +
+          (isPl ? 'Kontynuuj' : 'Continue') +
+          ' <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>' +
+        '</button>' +
+      '</div>';
+
+    // Role selection logic
+    let selectedRole = null;
+    const cards = container.querySelectorAll('.role-card');
+    const continueBtn = document.getElementById('continue-btn');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        cards.forEach(c => c.classList.remove('is-selected'));
+        card.classList.add('is-selected');
+        selectedRole = card.getAttribute('data-role');
+        continueBtn.classList.add('is-active');
+      });
+    });
+
+    continueBtn.addEventListener('click', async () => {
+      if (!selectedRole) return;
+      continueBtn.textContent = isPl ? 'Zapisywanie...' : 'Saving...';
+      continueBtn.style.pointerEvents = 'none';
+
+      try {
+        // Save role to Clerk user metadata
+        await clerk.user.update({
+          unsafeMetadata: {
+            ...clerk.user.unsafeMetadata,
+            role: selectedRole,
+          }
+        });
+        // Redirect based on role
+        if (selectedRole === 'gym_owner') {
+          window.location.href = 'index.html';
+        } else {
+          window.location.href = 'index.html';
+        }
+      } catch (err) {
+        console.error('Role save error:', err);
+        continueBtn.textContent = isPl ? 'Blad — sprobuj ponownie' : 'Error — try again';
+        continueBtn.style.pointerEvents = 'auto';
+      }
+    });
+
+  })();
+</script>
+</body>
+</html>
