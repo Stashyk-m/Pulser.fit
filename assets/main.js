@@ -140,6 +140,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // ── Billing toggle (monthly / annual) ──
   initBillingToggle();
+
+  // ── Cookie consent ──
+  initCookieBanner();
 });
 
 /* ── Billing toggle (Gym section only) ───────────────────────── */
@@ -210,4 +213,53 @@ function updateAllPrices() {
     const total = base + (3 * per);
     gymEx.innerHTML = 'a 4-location chain pays \u20ac' + base + ' + (3 \u00d7 \u20ac' + per + ') = <span class="text-white">\u20ac' + total + '/mo</span>';
   }
+}
+
+/* \u2500\u2500 Cookie consent \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 */
+const COOKIE_TEXTS = {
+  en: {
+    message: 'We use essential cookies to keep the site running and optional analytics cookies to improve your experience. See our <a href="cookies.html">Cookie Policy</a> for details.',
+    accept: 'Accept all',
+    reject: 'Essential only'
+  },
+  pl: {
+    message: 'U\u017cywamy niezb\u0119dnych plik\u00f3w cookie do dzia\u0142ania strony oraz opcjonalnych plik\u00f3w analitycznych, aby poprawi\u0107 Twoje do\u015bwiadczenia. Szczeg\u00f3\u0142y w naszej <a href="cookies.html">Polityce cookie</a>.',
+    accept: 'Akceptuj wszystkie',
+    reject: 'Tylko niezb\u0119dne'
+  }
+};
+
+function initCookieBanner() {
+  if (localStorage.getItem('pulser_cookie_consent')) return;
+
+  const banner = document.createElement('div');
+  banner.className = 'cookie-banner';
+  banner.id = 'cookie-banner';
+
+  const lang = _currentLang || 'en';
+  const t = COOKIE_TEXTS[lang] || COOKIE_TEXTS.en;
+
+  banner.innerHTML =
+    '<div class="cookie-inner">' +
+      '<div class="cookie-text">' + t.message + '</div>' +
+      '<div class="cookie-actions">' +
+        '<button class="cookie-btn cookie-btn-reject" id="cookie-reject">' + t.reject + '</button>' +
+        '<button class="cookie-btn cookie-btn-accept" id="cookie-accept">' + t.accept + '</button>' +
+      '</div>' +
+    '</div>';
+
+  document.body.appendChild(banner);
+
+  requestAnimationFrame(() => banner.classList.add('is-visible'));
+
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('pulser_cookie_consent', 'all');
+    banner.classList.remove('is-visible');
+    setTimeout(() => banner.remove(), 400);
+  });
+  document.getElementById('cookie-reject').addEventListener('click', () => {
+    localStorage.setItem('pulser_cookie_consent', 'essential');
+    banner.classList.remove('is-visible');
+    setTimeout(() => banner.remove(), 400);
+  });
 }
