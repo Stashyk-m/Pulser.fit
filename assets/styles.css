@@ -582,3 +582,19 @@ section span.w-3.h-3 {
   border-color: var(--border-strong);
 }
 .cookie-btn-reject:hover { color: var(--text); border-color: var(--text-muted); }
+
+/* ── Product name with suffix (.GYM / .ONE / .COACH) ──────── */
+.product-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+.product-name .suffix {
+  color: var(--accent);
+  font-size: 0.65em;
+  letter-spacing: -0.02em;
+}

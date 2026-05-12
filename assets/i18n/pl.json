@@ -656,9 +656,9 @@
   "platform.the_engine": "Silnik",
   "platform.why_one_platform_beats_a_stack": "Dlaczego jedna platforma bije stos",
   "platform.three_products_one_engine": "Trzy produkty. <span class=\"gradient-red\">Jeden silnik.</span>",
-  "platform.pulsergym": "Pulser.Gym",
-  "platform.pulserone": "Pulser.One",
-  "platform.pulsercoach": "Pulser.Coach",
+  "platform.pulsergym": "PULSER<span class=\"suffix\" data-i18n=\"platform.gym_suffix\">.GYM</span>",
+  "platform.pulserone": "PULSER<span class=\"suffix\" data-i18n=\"platform.one_suffix\">.ONE</span>",
+  "platform.pulsercoach": "PULSER<span class=\"suffix\" data-i18n=\"platform.coach_suffix\">.COACH</span>",
   "platform.a_proprietary_movement_interpretation_layer": "Własna warstwa interpretacji ruchu.",
   "platform.the_pulser_architecture_advantage": "Przewaga architektury Pulsera.",
   "platform.see_your_side_of_the_platform": "Zobacz swoją stronę platformy.",
@@ -4264,5 +4264,8 @@
   "virtuagym_alt.footer_cookies": "Pliki cookie",
   "blog_index.footer_cookies": "Pliki cookie",
   "blog_ai_personal_trainer.footer_cookies": "Pliki cookie",
-  "blog_gym_member_retention.footer_cookies": "Pliki cookie"
+  "blog_gym_member_retention.footer_cookies": "Pliki cookie",
+  "platform.gym_suffix": ".GYM",
+  "platform.one_suffix": ".ONE",
+  "platform.coach_suffix": ".COACH"
 }
