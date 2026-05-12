@@ -142,9 +142,8 @@
       return;
     }
 
-    const clerkLocale = isPl ? 'pl-PL' : undefined;
     try {
-      const loadOpts = {
+      await clerk.load({
         appearance: {
           variables: {
             colorPrimary: '#CB0020',
@@ -154,9 +153,7 @@
             fontFamily: 'Inter, sans-serif',
           }
         }
-      };
-      if (clerkLocale) loadOpts.localization = { locale: clerkLocale };
-      await clerk.load(loadOpts);
+      });
     } catch (err) {
       container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
       return;

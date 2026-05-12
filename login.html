@@ -85,12 +85,10 @@
       return;
     }
 
-    // Detect language for Clerk localization
     const lang = localStorage.getItem('pulser_lang') || (navigator.language || '').slice(0, 2).toLowerCase();
-    const clerkLocale = (lang === 'pl') ? 'pl-PL' : undefined;
 
     try {
-      const loadOpts = {
+      await clerk.load({
         appearance: {
           variables: {
             colorPrimary: '#CB0020',
@@ -112,9 +110,7 @@
             dividerText: 'text-white/30',
           }
         }
-      };
-      if (clerkLocale) loadOpts.localization = { locale: clerkLocale };
-      await clerk.load(loadOpts);
+      });
     } catch (err) {
       container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
       console.error('Clerk load error:', err);

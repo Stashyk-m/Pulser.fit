@@ -179,21 +179,19 @@ async function initAuthNav() {
 
   if (!clerk.user) return;
 
-  // User is signed in — replace "Sign In" links with user menu
+  // User is signed in — replace "Sign In" links with user name + avatar
   const signInLinks = document.querySelectorAll('a[href*="login.html"]');
-  const lang = _currentLang || 'en';
-  const dashLabel = lang === 'pl' ? 'Moje konto' : 'My Account';
+  const userName = clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress?.split('@')[0] || '';
+  const initial = (userName || '?')[0].toUpperCase();
 
   signInLinks.forEach(link => {
     // Only replace nav-level sign-in links, not footer links
     if (!link.closest('header, .nav')) return;
-    const initial = (clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress || '?')[0].toUpperCase();
     link.href = 'login.html';
-    link.textContent = dashLabel;
     link.setAttribute('data-i18n', '');
+    link.className = 'nav-link hidden sm:inline-flex text-sm';
     link.style.display = '';
-    // Add a small avatar circle before the text
-    link.innerHTML = '<span style="display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent);color:#fff;font-size:0.65rem;font-weight:700;margin-right:0.4rem;">' + initial + '</span>' + dashLabel;
+    link.innerHTML = '<span style="display:inline-flex;align-items:center;justify-content:center;width:1.35rem;height:1.35rem;border-radius:50%;background:#CB0020;color:#fff;font-size:0.6rem;font-weight:700;margin-right:0.35rem;flex-shrink:0;">' + initial + '</span>' + userName;
   });
 }
 
