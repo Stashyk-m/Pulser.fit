@@ -165,12 +165,10 @@
       return;
     }
 
-    // Check if user already has a role set — if so, skip picker
-    const existingRole = clerk.user.unsafeMetadata?.role;
-    if (existingRole) {
-      window.location.href = 'index.html';
-      return;
-    }
+    // Persona already known (chosen at signup via ?type=, or set by the API)? Skip the picker and route.
+    const knownType = clerk.user.publicMetadata?.accountType || clerk.user.unsafeMetadata?.accountType;
+    if (knownType === 'gym') { window.location.replace('https://app.pulser.fit'); return; }
+    if (knownType === 'member' || knownType === 'coach') { window.location.replace('member.html'); return; }
 
     const name = clerk.user.firstName || '';
     const greeting = name
@@ -234,19 +232,19 @@
       continueBtn.style.pointerEvents = 'none';
 
       try {
-        // Save role to Clerk user metadata
+        // Map the picker choice to a persona and store the intent.
+        // unsafeMetadata is client-writable; the trusted publicMetadata is set
+        // server-side (gym onboarding for gyms; default member otherwise).
+        const picked = selectedRole === 'gym_owner' ? 'gym' : 'member';
         await clerk.user.update({
           unsafeMetadata: {
             ...clerk.user.unsafeMetadata,
+            accountType: picked,
             role: selectedRole,
           }
         });
-        // Redirect based on role
-        if (selectedRole === 'gym_owner') {
-          window.location.href = 'index.html';
-        } else {
-          window.location.href = 'index.html';
-        }
+        // Gym owners go to the console onboarding; members to their area.
+        window.location.replace(picked === 'gym' ? 'https://app.pulser.fit/onboarding' : 'member.html');
       } catch (err) {
         console.error('Role save error:', err);
         continueBtn.textContent = isPl ? 'Blad — sprobuj ponownie' : 'Error — try again';

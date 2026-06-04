@@ -118,28 +118,24 @@
     }
 
     if (clerk.user) {
-      const name = clerk.user.firstName || clerk.user.emailAddresses?.[0]?.emailAddress || 'there';
-      const isPl = lang === 'pl';
-      container.innerHTML =
-        '<div class="text-center py-8">' +
-        '<div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-4"><svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>' +
-        '<p class="text-lg font-semibold mb-1">' + (isPl ? 'Hej ' : 'Hey ') + name + '!</p>' +
-        '<p class="text-white/50 text-sm mb-6">' + (isPl ? 'Jesteś już zalogowany/a.' : 'You\'re already signed in.') + '</p>' +
-        '<div class="flex flex-col gap-3 max-w-xs mx-auto">' +
-        '<a href="index.html" class="btn btn-primary justify-center">' + (isPl ? 'Strona główna' : 'Go to homepage') + '</a>' +
-        '<button id="sign-out-btn" class="btn btn-ghost justify-center text-sm">' + (isPl ? 'Wyloguj się' : 'Sign out') + '</button>' +
-        '</div></div>';
-      document.getElementById('sign-out-btn').addEventListener('click', async () => {
-        await clerk.signOut();
-        window.location.reload();
-      });
+      // Persona routing — send each user to their own destination.
+      // Gym = publicMetadata.accountType 'gym' OR a member of any gym Organization
+      // (mirrors the gym app's middleware so staff route correctly too).
+      // Everything else ⇒ member area (least privilege).
+      const accountType = clerk.user.publicMetadata?.accountType;
+      const hasOrg = (clerk.user.organizationMemberships || []).length > 0;
+      const dest = (accountType === 'gym' || hasOrg)
+        ? 'https://app.pulser.fit'
+        : 'member.html'; // member + coach (coach app not built yet) land here
+      window.location.replace(dest);
       return;
     }
 
     try {
       container.innerHTML = '';
       clerk.mountSignIn(container, {
-        afterSignInUrl: 'index.html',
+        // After sign-in, return here so the persona-routing branch above runs.
+        afterSignInUrl: 'login.html',
         afterSignUpUrl: 'welcome.html',
         signUpUrl: 'signup.html',
       });

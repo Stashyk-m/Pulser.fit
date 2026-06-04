@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Your Pulser.One — Pulser</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="description" content="Your Pulser.One member area." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { colors: { brand: '#E5142B', bg: '#08090A', elev: '#12121A' } } } };</script>
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="canonical" href="https://pulser.fit/member.html" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#08090A" />
+<script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="pk_live_Y2xlcmsucHVsc2VyLmZpdCQ"
+  src="https://clerk.pulser.fit/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+  type="text/javascript"
+></script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="index.html" class="logo-mark"><svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <path class="pulse-ring" d="M 50,8 A 42,42 0 1 1 8,50" stroke="#E5142B" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-2" d="M 50,24 A 26,26 0 1 1 24,50" stroke="#E5142B" stroke-width="9" fill="none"/>
+        <path class="pulse-ring pulse-ring-3" d="M 36,50 A 14,14 0 0 1 64,50 Z" fill="#E5142B"/>
+      </svg><span>PULSER</span></a>
+    <div class="flex items-center gap-3">
+      <a href="for-members.html" class="nav-link hidden sm:inline-flex">About Pulser.One</a>
+      <button id="signout-btn" class="btn btn-ghost hidden">Sign out</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pt-20 pb-24 md:pt-28">
+    <div class="max-w-2xl mx-auto px-6">
+      <div id="member-content">
+        <p class="text-center text-white/40 text-sm py-8">Loading…</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer mt-10">
+  <div class="border-t border-white/5"><div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/40"><div>&copy; 2026 Pulser. Part of D-Generative Group. All rights reserved.</div><div class="flex gap-6"><a href="privacy.html" class="hover:text-white/70">Privacy</a><a href="terms.html" class="hover:text-white/70">Terms</a><a href="cookies.html" class="hover:text-white/70">Cookies</a></div></div></div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  (async function initMember() {
+    const container = document.getElementById('member-content');
+    const signoutBtn = document.getElementById('signout-btn');
+    const lang = localStorage.getItem('pulser_lang') || (navigator.language || '').slice(0, 2).toLowerCase();
+    const isPl = lang === 'pl';
+
+    const clerk = await new Promise((resolve) => {
+      if (window.Clerk) return resolve(window.Clerk);
+      const iv = setInterval(() => { if (window.Clerk) { clearInterval(iv); resolve(window.Clerk); } }, 50);
+      setTimeout(() => { clearInterval(iv); resolve(null); }, 10000);
+    });
+
+    if (!clerk) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">' +
+        (isPl ? 'Nie udało się załadować uwierzytelniania. Odśwież stronę.' : 'Could not load authentication. Please refresh the page.') + '</p>';
+      return;
+    }
+
+    try { await clerk.load(); } catch (err) {
+      container.innerHTML = '<p class="text-center text-red-400 text-sm py-8">Auth error: ' + err.message + '</p>';
+      return;
+    }
+
+    // Not signed in → send to the single login on pulser.fit.
+    if (!clerk.user) { window.location.replace('login.html'); return; }
+
+    const accountType = clerk.user.publicMetadata?.accountType;
+    const hasOrg = (clerk.user.organizationMemberships || []).length > 0;
+    // A gym operator who somehow landed here gets a shortcut to their console.
+    const gymShortcut = (accountType === 'gym' || hasOrg)
+      ? '<a href="https://app.pulser.fit" class="btn btn-primary justify-center">' + (isPl ? 'Otwórz konsolę siłowni' : 'Open gym console') + ' <span class="arrow">→</span></a>'
+      : '';
+
+    const name = clerk.user.firstName || '';
+    const hi = name ? (isPl ? 'Cześć, ' + name + '!' : 'Hey ' + name + '!') : (isPl ? 'Cześć!' : 'Hey there!');
+
+    signoutBtn.classList.remove('hidden');
+    signoutBtn.addEventListener('click', async () => { await clerk.signOut(); window.location.replace('index.html'); });
+
+    container.innerHTML =
+      '<div class="text-center">' +
+        '<span class="eyebrow" style="display:block; margin-bottom:1rem;">Pulser.One</span>' +
+        '<h1 class="heading-lg mb-4">' + hi + '</h1>' +
+        '<p class="text-white/55 leading-relaxed max-w-lg mx-auto mb-8">' +
+          (isPl
+            ? 'Jesteś zalogowany/a jako członek Pulser.One. Aplikacja mobilna — skan ciała, AI coach, analiza techniki i dostęp do sieci siłowni — jest w drodze. Damy znać, gdy będzie gotowa.'
+            : 'You\'re signed in as a Pulser.One member. The mobile app — body scan, AI coach, live form feedback and cross-gym access — is on the way. We\'ll email you the moment it\'s ready.') +
+        '</p>' +
+        '<div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">' +
+          gymShortcut +
+          '<a href="for-members.html" class="btn ' + (gymShortcut ? '' : 'btn-primary ') + 'justify-center">' + (isPl ? 'Co potrafi Pulser.One' : 'What Pulser.One does') + '</a>' +
+          '<a href="index.html" class="btn btn-ghost justify-center">' + (isPl ? 'Strona główna' : 'Home') + '</a>' +
+        '</div>' +
+      '</div>';
+  })();
+</script>
+</body>
+</html>
