@@ -1,25 +1,40 @@
 /* ---------------------------------------------------------
-   Pulser.fit — Swiss Edition
+   Pulser.fit — Instrument / Telemetry Edition
    Strength in Sync
-   Colors : #080808 bg · #CB0020 accent
-   Fonts  : Inter (display + body) · DM Mono (data numbers)
+   Colors : #08090A ground · #E5142B accent
+   Fonts  : Archivo (display) · Hanken Grotesk (body) · IBM Plex Mono (telemetry)
 --------------------------------------------------------- */
 
 :root {
-  --bg:            #080808;
-  --bg-elev:       #0f0f0f;
-  --bg-elev-2:     #141414;
-  --border:        rgba(237, 237, 237, 0.08);
-  --border-strong: rgba(237, 237, 237, 0.15);
-  --text:          #EDEDED;
-  --text-muted:    rgba(237, 237, 237, 0.50);
-  --text-dim:      rgba(237, 237, 237, 0.25);
-  --accent:        #CB0020;
-  --accent-soft:   rgba(203, 0, 32, 0.10);
+  /* Type — engineered display / body / telemetry split */
+  --font-display:  'Archivo', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:     'Hanken Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:     'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* Ground & surfaces — cool near-black reads as "instrument", not warm */
+  --bg:            #08090A;
+  --bg-elev:       #0E1012;
+  --bg-elev-2:     #14171A;
+  --surface:       #0E1012;   /* alias */
+  --surface-2:     #14171A;   /* alias */
+
+  /* Ink ramp — verified contrast on near-black */
+  --ink:           #F3F4F5;   /* headings, ~16:1 */
+  --text:          #C7CCD0;   /* body, ~10:1 */
+  --text-muted:    #9AA1A7;   /* secondary body, ~6:1 */
+  --text-dim:      #6A7075;   /* labels only (large/uppercase) */
+
+  /* Brand red — calibrated slightly brighter than #CB0020 so it carries on near-black */
+  --accent:        #E5142B;
+  --accent-soft:   rgba(229, 20, 43, 0.14);
   --success:       #22C55E;
   --warning:       #F59E0B;
-  --font-display:  'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body:     'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Hairlines — the Swiss-grid backbone */
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out-expo, no bounce */
 }
 
 *, *::before, *::after {
@@ -33,13 +48,33 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.65;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  /* Purposeful lighting: ONE soft top-center source + a fine instrument grid. */
+  background-image:
+    radial-gradient(120% 80% at 50% -10%, rgba(255,255,255,0.05), transparent 55%),
+    radial-gradient(90% 60% at 50% -5%, var(--accent-soft), transparent 60%),
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+  background-position: center top, center top, center top, center top;
+  background-repeat: no-repeat, no-repeat, repeat, repeat;
+}
+
+/* Faint grain overlay for depth (no asset needed) */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 a { color: inherit; text-decoration: none; }
@@ -53,10 +88,11 @@ a { color: inherit; text-decoration: none; }
 .heading-xl {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 6.5vw, 5rem);
-  font-weight: 800;
+  font-weight: 900;
   line-height: 0.92;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .heading-lg {
@@ -64,26 +100,28 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(1.9rem, 4vw, 3.25rem);
   font-weight: 800;
   line-height: 0.94;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .heading-md {
   font-family: var(--font-display);
   font-size: clamp(1.15rem, 2vw, 1.5rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  color: var(--ink);
 }
 
 .eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.67rem;
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text-dim);
 }
 
 /* Gradient text → flat accent */
@@ -110,12 +148,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-link {
+  font-family: var(--font-mono);
   color: var(--text-muted);
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: color 0.15s;
+  transition: color 0.15s var(--ease);
 }
 
 .nav-link:hover,
@@ -141,11 +180,12 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   font-size: 0.82rem;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .logo-mark svg {
@@ -179,12 +219,12 @@ a { color: inherit; text-decoration: none; }
   gap: 0.5rem;
   padding: 0.75rem 1.4rem;
   border-radius: 0;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: all 0.15s;
+  transition: all 0.2s var(--ease);
   border: 1px solid transparent;
   white-space: nowrap;
   cursor: pointer;
@@ -197,8 +237,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .btn-primary:hover {
-  background: #a8001b;
-  border-color: #a8001b;
+  background: #ff2034;
+  border-color: #ff2034;
 }
 
 .btn-ghost {
@@ -232,8 +272,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .card-accent {
-  background: rgba(203, 0, 32, 0.04);
-  border-color: rgba(203, 0, 32, 0.35);
+  background: rgba(229, 20, 43, 0.04);
+  border-color: rgba(229, 20, 43, 0.35);
 }
 
 /* ── Ruled grid (2×N, borders shared) ───────────────── */
@@ -287,21 +327,22 @@ a { color: inherit; text-decoration: none; }
 }
 
 .cmp-table th {
+  font-family: var(--font-mono);
   color: var(--text-muted);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 0.67rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
 }
 
 .cmp-table td.pulser-col {
-  background: rgba(203, 0, 32, 0.05);
+  background: rgba(229, 20, 43, 0.05);
   color: var(--text);
   font-weight: 600;
 }
 
 .cmp-table th.pulser-col {
-  background: rgba(203, 0, 32, 0.05);
+  background: rgba(229, 20, 43, 0.05);
   color: var(--accent);
 }
 
@@ -574,7 +615,7 @@ section span.w-3.h-3 {
   color: #fff;
   border-color: var(--accent);
 }
-.cookie-btn-accept:hover { background: #a8001b; border-color: #a8001b; }
+.cookie-btn-accept:hover { background: #ff2034; border-color: #ff2034; }
 
 .cookie-btn-reject {
   background: transparent;
@@ -592,6 +633,7 @@ section span.w-3.h-3 {
   letter-spacing: -0.03em;
   margin-bottom: 0.85rem;
   line-height: 1;
+  color: var(--ink);
 }
 .product-name .suffix {
   color: var(--accent);
